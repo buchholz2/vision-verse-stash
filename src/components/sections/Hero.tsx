@@ -2,54 +2,52 @@ import { ArrowRight, BadgeCheck, Sparkles, HeartHandshake } from "lucide-react";
 import { motion } from "framer-motion";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
+import { DecorBackground } from "@/components/DecorBackground";
 import drClinica from "@/assets/photos/dr-clinica.png";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0 },
+};
 
 export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden bg-gradient-hero"
+      className="relative min-h-screen flex items-center pt-32 pb-24 overflow-hidden bg-gradient-hero"
     >
-      {/* Decorative gradient orbs */}
-      <div
-        className="absolute -top-40 -right-40 h-[520px] w-[520px] rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(circle, hsl(var(--primary-glow)/0.5), transparent 70%)" }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute -bottom-32 -left-32 h-[420px] w-[420px] rounded-full opacity-30 blur-3xl"
-        style={{ background: "radial-gradient(circle, hsl(var(--accent)/0.35), transparent 70%)" }}
-        aria-hidden="true"
-      />
-
+      <DecorBackground variant="hero" showWatermark />
 
       <div className="container-narrow relative z-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
         {/* Copy */}
         <div className="lg:col-span-7">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-card/70 px-4 py-1.5 backdrop-blur-sm text-xs uppercase tracking-[0.16em] text-primary mb-8"
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-card/80 px-4 py-1.5 backdrop-blur-sm text-xs uppercase tracking-[0.16em] text-primary mb-8 shadow-soft"
           >
             <BadgeCheck className="h-3.5 w-3.5 text-accent" />
             <span>CRO 29705 · Ijuí/RS</span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[1.05] text-foreground text-balance"
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[1.04] text-foreground text-balance"
           >
             Ortodontia e estética <br className="hidden md:block" />
             <span className="italic text-primary">do sorriso</span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed text-pretty"
           >
             Tratamentos personalizados com foco em alinhamento dental, funcionalidade
@@ -58,9 +56,10 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            transition={{ duration: 0.6, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 flex flex-wrap gap-3 sm:gap-4"
           >
             <WhatsAppButton size="lg">Agende sua avaliação</WhatsAppButton>
@@ -68,7 +67,7 @@ export function Hero() {
               asChild
               size="lg"
               variant="outline"
-              className="h-14 rounded-full px-7 border-primary/25 hover:bg-primary/5"
+              className="h-14 rounded-full px-7 border-primary/25 bg-card/60 backdrop-blur-sm hover:bg-primary/5"
             >
               <a href="#tratamentos">
                 Conheça os tratamentos
@@ -78,9 +77,10 @@ export function Hero() {
           </motion.div>
 
           <motion.ul
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            transition={{ duration: 0.6, delay: 0.35 }}
             className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground"
           >
             <li className="inline-flex items-center gap-2">
@@ -100,14 +100,20 @@ export function Hero() {
 
         {/* Portrait */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 24 }}
+          initial={{ opacity: 0, scale: 0.97, y: 18 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-5 relative"
         >
           <div className="relative mx-auto max-w-md lg:max-w-none">
+            {/* glow behind */}
             <div
-              className="absolute -inset-4 rounded-[2rem] bg-gradient-sage opacity-15 blur-2xl"
+              className="absolute -inset-6 rounded-[2.5rem] bg-gradient-sage opacity-20 blur-3xl"
+              aria-hidden="true"
+            />
+            {/* gold accent corner */}
+            <div
+              className="absolute -top-3 -right-3 h-24 w-24 rounded-full bg-gradient-gold opacity-70 blur-2xl"
               aria-hidden="true"
             />
             <div className="relative overflow-hidden rounded-[2rem] border border-border/60 shadow-elegant aspect-[4/5] bg-muted">
@@ -118,6 +124,8 @@ export function Hero() {
                 loading="eager"
                 fetchPriority="high"
               />
+              {/* gradient overlay for legibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
               {/* CRO badge */}
               <div className="absolute bottom-5 left-5 right-5 glass-card rounded-2xl px-5 py-3 flex items-center justify-between">
                 <div>
@@ -132,7 +140,7 @@ export function Hero() {
       </div>
 
       {/* gold divider at bottom */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 gold-divider" aria-hidden="true" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 gold-divider z-10" aria-hidden="true" />
     </section>
   );
 }

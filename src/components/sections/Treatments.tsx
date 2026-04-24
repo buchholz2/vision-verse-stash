@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { DecorBackground } from "@/components/DecorBackground";
 import {
   Sparkles,
   Sun,
@@ -19,8 +20,9 @@ const items = [
 
 export function Treatments() {
   return (
-    <section id="tratamentos" className="relative py-24 md:py-32 bg-gradient-soft">
-      <div className="container-narrow">
+    <section id="tratamentos" className="relative py-24 md:py-32 bg-gradient-soft overflow-hidden">
+      <DecorBackground variant="soft" showWatermark />
+      <div className="container-narrow relative z-10">
         <div className="max-w-2xl">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
