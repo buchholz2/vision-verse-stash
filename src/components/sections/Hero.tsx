@@ -5,10 +5,6 @@ import { Button } from "@/components/ui/button";
 import drClinica from "@/assets/photos/dr-clinica.png";
 
 export function Hero() {
-  const isMobile = useIsMobile();
-  const prefersReduced = usePrefersReducedMotion();
-  const show3D = !isMobile && !prefersReduced;
-
   return (
     <section
       id="inicio"
@@ -26,12 +22,6 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      {/* 3D background */}
-      {show3D && (
-        <Suspense fallback={null}>
-          <ToothScene className="absolute inset-0 -z-0 opacity-70" />
-        </Suspense>
-      )}
 
       <div className="container-narrow relative z-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
         {/* Copy */}
