@@ -53,11 +53,14 @@
     --whatsapp: 142 70% 38%;
     --whatsapp-foreground: 0 0% 100%;
 
-    /* Gradients */
+    /* Gradients — warmer, with depth */
     --gradient-sage: linear-gradient(135deg, hsl(137 7% 39%) 0%, hsl(131 7% 51%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(60 20% 98%) 0%, hsl(60 14% 95%) 100%);
-    --gradient-hero: radial-gradient(ellipse at top, hsl(131 14% 92% / 0.6), transparent 60%),
-                     linear-gradient(180deg, hsl(60 20% 98%), hsl(60 14% 96%));
+    --gradient-soft: linear-gradient(180deg, hsl(40 30% 97%) 0%, hsl(60 14% 94%) 100%);
+    --gradient-hero:
+      radial-gradient(ellipse 80% 60% at 85% 15%, hsl(131 16% 84% / 0.55), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 10% 90%, hsl(38 50% 86% / 0.45), transparent 60%),
+      radial-gradient(ellipse 100% 60% at 50% 0%, hsl(40 40% 96%), transparent 50%),
+      linear-gradient(180deg, hsl(40 30% 97%) 0%, hsl(60 18% 95%) 60%, hsl(60 14% 93%) 100%);
     --gradient-gold: linear-gradient(135deg, hsl(38 47% 60%), hsl(38 55% 72%));
 
     /* Shadows */
