@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Stethoscope, Smile } from "lucide-react";
+import { DecorBackground } from "@/components/DecorBackground";
 
 const steps = [
   {
@@ -24,8 +25,9 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="como-funciona" className="relative py-24 md:py-32 bg-gradient-soft">
-      <div className="container-narrow">
+    <section id="como-funciona" className="relative py-24 md:py-32 bg-gradient-soft overflow-hidden">
+      <DecorBackground variant="soft" />
+      <div className="container-narrow relative z-10">
         <div className="max-w-2xl mx-auto text-center">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
