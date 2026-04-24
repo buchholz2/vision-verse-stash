@@ -3,11 +3,11 @@ import { ArrowRight, BadgeCheck, Sparkles, HeartHandshake } from "lucide-react";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import { WhatsAppButton } from "./WhatsAppButton";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Button } from "@/components/ui/button";
 import drClinica from "@/assets/photos/dr-clinica.png";
 
-const ToothScene = lazy(() => import("./ToothScene"));
+const ToothScene = lazy(() => import("@/components/ToothScene"));
 
 export function Hero() {
   const isMobile = useIsMobile();
