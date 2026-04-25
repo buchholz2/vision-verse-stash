@@ -103,7 +103,7 @@ export function Hero() {
               <img
                 src={heroGabriel}
                 alt="Dr. Gabriel Paulo Rockenbach em sua clínica"
-                className="h-[520px] w-full rounded-[1.75rem] object-cover object-[center_40%] md:h-[640px] lg:h-[690px]"
+                className="h-[520px] w-full rounded-[1.75rem] object-cover object-[center_24%] md:h-[640px] lg:h-[690px]"
                 loading="eager"
               />
             </div>

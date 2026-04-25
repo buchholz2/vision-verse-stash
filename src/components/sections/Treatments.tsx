@@ -117,7 +117,7 @@ export function Treatments() {
               <img
                 src={tratamentosClinica}
                 alt="Dr. Gabriel em consultório odontológico"
-                className="absolute inset-0 h-full w-full object-cover object-[center_38%]"
+                className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
                 loading="lazy"
               />
             </div>

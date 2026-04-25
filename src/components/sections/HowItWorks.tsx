@@ -71,7 +71,7 @@ export function HowItWorks() {
               <img
                 src={consultaPlanejamento}
                 alt="Dr. Gabriel em momento de planejamento clínico"
-                className="absolute inset-0 h-full w-full object-cover object-[center_44%]"
+                className="absolute inset-0 h-full w-full object-cover object-[center_34%]"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/35 via-transparent to-transparent" aria-hidden="true" />

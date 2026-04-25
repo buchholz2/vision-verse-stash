@@ -43,7 +43,7 @@ export function Orthodontics() {
             <img
               src={especialidadeAlinhadores}
               alt="Dr. Gabriel em ambiente clínico odontológico"
-              className="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-[center_42%]"
+              className="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-[center_32%]"
               loading="lazy"
             />
           </div>

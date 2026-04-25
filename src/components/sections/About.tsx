@@ -31,7 +31,7 @@ export function About() {
             <img
               src={sobreGabriel}
               alt="Dr. Gabriel Paulo Rockenbach em retrato institucional"
-              className="aspect-[5/4] w-full rounded-[1.9rem] object-cover object-[center_42%] lg:aspect-[4/5]"
+              className="aspect-[5/4] w-full rounded-[1.9rem] object-cover object-[center_34%] lg:aspect-[4/5]"
               loading="lazy"
             />
             <div className="absolute -bottom-7 left-7 right-7 rounded-[1.7rem] border border-border/70 bg-card/95 px-6 py-5 shadow-card backdrop-blur-sm md:left-auto md:right-[-1.5rem] md:max-w-[290px]">

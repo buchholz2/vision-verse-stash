@@ -22,7 +22,7 @@ export function HumanizedCare() {
             <img
               src={atendimentoClinico}
               alt="Dr. Gabriel em consultório odontológico"
-              className="aspect-[5/4] w-full rounded-[1.9rem] object-cover object-[center_38%]"
+              className="aspect-[5/4] w-full rounded-[1.9rem] object-cover object-[center_24%]"
               loading="lazy"
             />
             <div className="absolute bottom-7 left-7 rounded-3xl border border-white/40 bg-card/90 p-5 shadow-card backdrop-blur-sm">
