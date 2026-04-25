@@ -16,7 +16,7 @@ export function DecorBackground({
     >
       {/* Soft grain overlay */}
       <svg
-        className="absolute inset-0 h-full w-full opacity-[0.07] mix-blend-multiply"
+        className="absolute inset-0 h-full w-full opacity-[0.045] mix-blend-multiply"
         xmlns="http://www.w3.org/2000/svg"
       >
         <filter id="decor-noise">
@@ -28,8 +28,8 @@ export function DecorBackground({
 
       <div
         className={cn(
-          "absolute inset-0 opacity-[0.28]",
-          variant === "hero" ? "hairline-panel" : "hairline-panel opacity-[0.18]"
+          "absolute inset-0 opacity-[0.14]",
+          variant === "hero" ? "hairline-panel" : "hairline-panel opacity-[0.09]"
         )}
       />
       <div

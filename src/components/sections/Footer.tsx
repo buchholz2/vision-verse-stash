@@ -1,5 +1,5 @@
 import { Instagram, MessageCircle } from "lucide-react";
-import logoWordmark from "@/assets/brand/logo-wordmark.png";
+import logoFull from "@/assets/brand/logo-full.png";
 import { whatsappLink, INSTAGRAM_URL, PHONE_DISPLAY } from "@/lib/contact";
 
 const links = [
@@ -14,12 +14,12 @@ const links = [
 export function Footer() {
   return (
     <footer className="bg-background border-t border-border/60">
-      <div className="container-narrow grid grid-cols-1 gap-10 py-16 md:grid-cols-12">
+      <div className="container-wide grid grid-cols-1 gap-10 py-16 md:grid-cols-12">
         <div className="md:col-span-5">
           <img
-            src={logoWordmark}
-            alt="Gabriel Paulo Rockenbach"
-            className="h-12 w-auto"
+            src={logoFull}
+            alt="Gabriel Paulo Rockenbach - cirurgião-dentista e ortodontista"
+            className="h-20 w-auto max-w-full object-contain md:h-24"
             loading="lazy"
           />
           <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-sm">
@@ -77,7 +77,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border/60">
-        <div className="container-narrow py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+        <div className="container-wide py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Gabriel Paulo Rockenbach. Todos os direitos reservados.</p>
           <p className="max-w-xl text-center md:text-right">
             As informações deste site têm caráter informativo e não substituem

@@ -1,48 +1,42 @@
 import { motion } from "framer-motion";
 import { Braces, Crown, Layers, Scissors, ShieldCheck, Sun, Wrench } from "lucide-react";
-import { DecorBackground } from "@/components/DecorBackground";
-import consultaPlanejamento from "@/assets/photos/consulta-planejamento.png";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
+import tratamentosClinica from "@/assets/photos/real/gabriel-tratamentos-clinica.jpg";
 
 const treatments = [
   {
     icon: ShieldCheck,
-    area: "Prevenção",
     title: "Profilaxia",
     desc: "Limpeza profissional para prevenção, saúde gengival e manutenção do sorriso.",
     benefit: "Prevenção e cuidado contínuo",
   },
   {
     icon: Sun,
-    area: "Estética",
     title: "Clareamento",
     desc: "Tratamento estético para deixar o sorriso mais luminoso com segurança.",
     benefit: "Estética com orientação profissional",
   },
   {
     icon: Wrench,
-    area: "Restauração",
     title: "Restaurações",
     desc: "Recuperação de dentes com materiais modernos, buscando função e naturalidade.",
     benefit: "Saúde e estética dental",
   },
   {
     icon: Layers,
-    area: "Harmonia",
     title: "Facetas",
     desc: "Reabilitação estética para melhorar forma, cor e harmonia do sorriso.",
     benefit: "Harmonia estética",
   },
   {
     icon: Crown,
-    area: "Reabilitação",
     title: "Próteses",
     desc: "Reabilitação funcional e estética para repor dentes ausentes.",
     benefit: "Função e confiança",
   },
   {
     icon: Scissors,
-    area: "Cirurgia",
-    title: "Exodontia de Sisos",
+    title: "Exodontia de sisos",
     desc: "Procedimento planejado com foco em segurança, conforto e recuperação.",
     benefit: "Planejamento e cuidado",
   },
@@ -51,96 +45,64 @@ const treatments = [
 const orthodonticTreatments = [
   "Aparelhos convencionais",
   "Aparelhos autoligados",
-  "Aparelhos estéticos de cerâmica",
+  "Aparelhos estéticos",
   "Alinhadores Invisalign®",
 ];
 
 export function Treatments() {
   return (
-    <section id="tratamentos" className="relative overflow-hidden bg-gradient-soft py-24 md:py-32">
-      <DecorBackground variant="soft" />
-      <div className="container-narrow relative z-10">
-        <div className="grid grid-cols-1 items-end gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <motion.span
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.55 }}
-              className="text-xs uppercase tracking-[0.2em] text-accent"
-            >
-              Tratamentos
-            </motion.span>
-            <motion.h2
+    <section id="tratamentos" className="relative overflow-hidden bg-[hsl(42_30%_97%)] py-24 md:py-32">
+      <div className="container-wide">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-3 max-w-2xl font-serif text-4xl leading-[1.08] text-foreground md:text-5xl text-balance"
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:sticky lg:top-28"
             >
-              Cuidado completo com uma estética mais{" "}
-              <span className="italic text-primary">natural e precisa</span>
-            </motion.h2>
+              <p className="text-xs uppercase tracking-[0.28em] text-accent">Tratamentos</p>
+              <h2 className="mt-5 max-w-xl font-serif text-5xl leading-[1.03] text-foreground md:text-6xl text-balance">
+                Menos catálogo. Mais{" "}
+                <span className="italic text-primary">cuidado indicado.</span>
+              </h2>
+              <p className="mt-7 max-w-md text-lg leading-relaxed text-muted-foreground">
+                Tratamentos gerais apresentados de forma clara, sem transformar o site
+                em uma vitrine genérica de procedimentos.
+              </p>
+            </motion.div>
           </div>
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.16 }}
-            className="lg:col-span-5 text-muted-foreground leading-relaxed text-pretty"
-          >
-            Tratamentos odontológicos organizados por necessidade, com indicação clara,
-            materiais atuais e cuidado na experiência de atendimento.
-          </motion.p>
-        </div>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
-          {treatments.map((item, index) => {
-            const featured = index === 0 || index === 3;
-
-            return (
-              <motion.article
-                key={item.title}
-                initial={{ opacity: 0, y: 22 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.58, delay: 0.05 * index, ease: [0.22, 1, 0.36, 1] }}
-                className={`group overflow-hidden rounded-[1.8rem] border border-border/70 bg-card/95 shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-elegant ${
-                  featured ? "lg:col-span-2" : ""
-                }`}
-              >
-              <div className="grid min-h-full grid-cols-1 md:grid-cols-[0.8fr_1.2fr]">
-                <div className="relative flex min-h-28 flex-col justify-between overflow-hidden bg-secondary/75 p-6 md:min-h-40">
-                  <div className="absolute inset-0 hairline-panel opacity-20" aria-hidden="true" />
-                  <div
-                    className="absolute -right-10 -top-10 h-32 w-32 rounded-full border border-primary/10"
-                    aria-hidden="true"
-                  />
-                  <p className="relative max-w-[10rem] text-xs uppercase tracking-[0.18em] text-primary/70">
-                    {item.area}
-                  </p>
-                  <div className="relative mt-6 flex items-end justify-between gap-5">
-                    <span className="flex h-16 w-16 items-center justify-center rounded-full border border-primary/15 bg-card text-primary shadow-card">
-                      <item.icon className="h-7 w-7" />
-                    </span>
-                    <span
-                      className={`max-w-[8rem] text-right text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground/75 ${
-                        featured ? "hidden xl:block" : "hidden"
-                      }`}
-                    >
-                      {item.benefit}
-                    </span>
+          <div className="lg:col-span-7">
+            <div className="border-t border-border/80">
+              {treatments.map((item, index) => (
+                <motion.article
+                  key={item.title}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.58, delay: 0.04 * index, ease: [0.22, 1, 0.36, 1] }}
+                  className="group grid gap-5 border-b border-border/80 py-8 transition-colors duration-500 md:grid-cols-[4rem_1fr_12rem] md:items-start"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/12 bg-card text-primary shadow-soft">
+                    <item.icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <h3 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
+                      {item.desc}
+                    </p>
                   </div>
-                </div>
-                <div className="p-6 md:p-7">
-                  <p className="text-xs uppercase tracking-[0.16em] text-accent">{item.benefit}</p>
-                  <h3 className="mt-4 font-serif text-2xl leading-tight text-foreground">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
-                </div>
-              </div>
-              </motion.article>
-            );
-          })}
+                  <p className="text-sm font-medium leading-relaxed text-primary md:text-right">
+                    {item.benefit}
+                  </p>
+                </motion.article>
+              ))}
+            </div>
+          </div>
         </div>
 
         <motion.div
@@ -148,41 +110,48 @@ export function Treatments() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-16 overflow-hidden rounded-[2rem] border border-primary/15 bg-primary text-primary-foreground shadow-elegant"
+          className="mt-20 overflow-hidden rounded-[2.2rem] bg-card shadow-elegant"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12">
-            <div className="relative min-h-[320px] overflow-hidden lg:col-span-5">
+            <div className="relative min-h-[420px] lg:col-span-6">
               <img
-                src={consultaPlanejamento}
-                alt="Planejamento ortodôntico explicado em consulta"
-                className="h-full w-full object-cover opacity-80"
+                src={tratamentosClinica}
+                alt="Dr. Gabriel em consultório odontológico"
+                className="absolute inset-0 h-full w-full object-cover object-[center_38%]"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary/45" aria-hidden="true" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-accent">Foco principal</p>
-                <h3 className="mt-3 font-serif text-4xl leading-tight">
-                  Tratamentos ortodônticos
-                </h3>
-              </div>
             </div>
 
-            <div className="lg:col-span-7 p-6 md:p-9">
-              <p className="max-w-xl text-primary-foreground/80 leading-relaxed">
-                Opções modernas para alinhar o sorriso com conforto, estética e planejamento
-                individualizado, escolhidas após avaliação clínica.
+            <div className="bg-primary p-8 text-primary-foreground md:p-12 lg:col-span-6">
+              <p className="text-xs uppercase tracking-[0.28em] text-accent">Ortodontia</p>
+              <h3 className="mt-5 max-w-xl font-serif text-4xl leading-[1.04] md:text-6xl text-balance">
+                O tratamento principal ganha espaço próprio.
+              </h3>
+              <p className="mt-6 max-w-xl text-primary-foreground/78 leading-relaxed md:text-lg">
+                A escolha entre aparelho convencional, autoligado, estético ou Invisalign®
+                acontece depois de avaliação e planejamento individualizado.
               </p>
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              <div className="mt-9 border-y border-primary-foreground/16">
                 {orthodonticTreatments.map((item) => (
                   <div
                     key={item}
-                    className="group flex min-h-24 items-center justify-between gap-4 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/10 px-5 py-4 transition-colors duration-500 hover:bg-primary-foreground/15"
+                    className="flex items-center gap-4 border-b border-primary-foreground/16 py-5 last:border-b-0"
                   >
-                    <span className="text-sm font-medium text-primary-foreground/90">{item}</span>
-                    <Braces className="h-5 w-5 shrink-0 text-accent opacity-80" />
+                    <Braces className="h-5 w-5 text-accent" />
+                    <span className="font-medium text-primary-foreground/92">{item}</span>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-9">
+                <WhatsAppButton
+                  size="lg"
+                  variant="outline"
+                  className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/15"
+                >
+                  Quero avaliar meu sorriso
+                </WhatsAppButton>
               </div>
             </div>
           </div>

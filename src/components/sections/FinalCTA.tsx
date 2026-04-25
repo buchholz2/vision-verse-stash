@@ -10,9 +10,9 @@ export function FinalCTA() {
       className="relative overflow-hidden bg-primary py-16 text-primary-foreground md:py-28"
     >
       <div className="absolute inset-x-0 top-0 gold-divider opacity-70" aria-hidden="true" />
-      <div className="absolute inset-0 hairline-panel opacity-[0.08]" aria-hidden="true" />
+      <div className="absolute inset-0 opacity-[0.04]" aria-hidden="true" />
 
-      <div className="container-narrow relative text-center">
+      <div className="container-wide relative text-center">
         <motion.span
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}

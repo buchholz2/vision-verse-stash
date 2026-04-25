@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoIcon from "@/assets/brand/logo-icon.png";
+import logoFull from "@/assets/brand/logo-full.png";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { cn } from "@/lib/utils";
 
@@ -28,17 +28,17 @@ export function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-smooth",
-        scrolled ? "glass border-b border-border/50 py-3" : "bg-transparent py-5"
+        scrolled ? "glass border-b border-border/50 py-3" : "bg-background/70 py-4 backdrop-blur-sm"
       )}
     >
-      <div className="container-narrow flex items-center justify-between gap-6">
-        <a href="#inicio" className="group flex items-center gap-3" aria-label="Página inicial">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/15 bg-card/75 shadow-soft transition-all duration-500 group-hover:border-primary/30">
-            <img src={logoIcon} alt="" className="h-6 w-6 object-contain" loading="eager" />
-          </span>
-          <span className="font-serif text-lg leading-none text-foreground md:text-xl">
-            Gabriel Paulo Rockenbach
-          </span>
+      <div className="container-wide flex items-center justify-between gap-6">
+        <a href="#inicio" className="group flex min-w-0 items-center" aria-label="Página inicial">
+          <img
+            src={logoFull}
+            alt="Gabriel Paulo Rockenbach - cirurgião-dentista e ortodontista"
+            className="h-11 w-auto max-w-[235px] object-contain transition-opacity duration-500 group-hover:opacity-85 sm:h-12 sm:max-w-[330px] lg:h-14 lg:max-w-[410px]"
+            loading="eager"
+          />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8" aria-label="Navegação principal">

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
-import consultaPlanejamento from "@/assets/photos/consulta-planejamento.png";
+import consultaPlanejamento from "@/assets/photos/real/gabriel-planejamento-mesa.jpg";
 
 const steps = [
   {
@@ -23,8 +23,8 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="como-funciona" className="relative overflow-hidden bg-background py-24 md:py-32">
-      <div className="container-narrow">
+    <section id="como-funciona" className="relative overflow-hidden bg-[hsl(42_28%_97%)] py-24 md:py-32">
+      <div className="container-wide">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <motion.span
@@ -59,7 +59,7 @@ export function HowItWorks() {
           </motion.p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
+        <div className="mt-16 grid grid-cols-1 overflow-hidden rounded-[2.4rem] border border-border/70 bg-card shadow-elegant lg:grid-cols-12">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -67,14 +67,15 @@ export function HowItWorks() {
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-5"
           >
-            <div className="relative overflow-hidden rounded-[2.2rem] border border-border/70 bg-secondary/70 p-3 shadow-elegant">
+            <div className="relative h-full min-h-[520px] overflow-hidden">
               <img
                 src={consultaPlanejamento}
-                alt="Dr. Gabriel explicando o planejamento do tratamento para paciente"
-                className="aspect-[4/5] w-full rounded-[1.7rem] object-cover"
+                alt="Dr. Gabriel em momento de planejamento clínico"
+                className="absolute inset-0 h-full w-full object-cover object-[center_44%]"
                 loading="lazy"
               />
-              <div className="absolute bottom-6 left-6 right-6 rounded-3xl border border-white/40 bg-card/90 p-5 shadow-card backdrop-blur-sm">
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/35 via-transparent to-transparent" aria-hidden="true" />
+              <div className="absolute bottom-7 left-7 right-7 rounded-3xl border border-white/40 bg-card/90 p-6 shadow-card backdrop-blur-sm">
                 <p className="text-xs uppercase tracking-[0.18em] text-accent">Planejamento</p>
                 <p className="mt-2 font-serif text-2xl leading-tight text-foreground">
                   Clareza antes de iniciar
@@ -83,8 +84,8 @@ export function HowItWorks() {
             </div>
           </motion.div>
 
-          <div className="lg:col-span-7">
-            <ol className="relative border-l border-border/80 pl-6 md:pl-9">
+          <div className="lg:col-span-7 p-7 md:p-10">
+            <ol className="relative border-l border-border/80 pl-6 md:pl-10">
               {steps.map((step, index) => (
                 <motion.li
                   key={step.title}
@@ -92,11 +93,11 @@ export function HowItWorks() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ duration: 0.58, delay: 0.07 * index, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative pb-9 last:pb-0"
+                  className="relative pb-10 last:pb-0"
                 >
-                  <span className="absolute -left-[2.05rem] top-1 h-4 w-4 rounded-full border border-accent/50 bg-background shadow-soft md:-left-[2.58rem]" />
-                  <div className="grid gap-3 md:grid-cols-[8rem_1fr] md:gap-8">
-                    <p className="font-serif text-4xl leading-none text-accent/80">
+                  <span className="absolute -left-[2.05rem] top-2 h-4 w-4 rounded-full border border-accent/50 bg-card shadow-soft md:-left-[2.58rem]" />
+                  <div className="grid gap-3 md:grid-cols-[7rem_1fr] md:gap-8">
+                    <p className="font-serif text-5xl leading-none text-accent/80">
                       {String(index + 1).padStart(2, "0")}
                     </p>
                     <div>
