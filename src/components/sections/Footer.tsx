@@ -5,6 +5,7 @@ import { whatsappLink, INSTAGRAM_URL, PHONE_DISPLAY } from "@/lib/contact";
 const links = [
   { href: "#inicio", label: "Início" },
   { href: "#sobre", label: "Sobre" },
+  { href: "#ortodontia", label: "Ortodontia" },
   { href: "#tratamentos", label: "Tratamentos" },
   { href: "#como-funciona", label: "Como Funciona" },
   { href: "#contato", label: "Contato" },
@@ -13,7 +14,7 @@ const links = [
 export function Footer() {
   return (
     <footer className="bg-background border-t border-border/60">
-      <div className="container-narrow py-16 grid md:grid-cols-12 gap-10">
+      <div className="container-narrow grid grid-cols-1 gap-10 py-16 md:grid-cols-12">
         <div className="md:col-span-5">
           <img
             src={logoWordmark}
@@ -23,7 +24,7 @@ export function Footer() {
           />
           <p className="mt-5 text-sm text-muted-foreground leading-relaxed max-w-sm">
             Cirurgião-dentista e especialista em Ortodontia. Cuidado humanizado,
-            planejamento individualizado e tecnologia moderna para o seu sorriso.
+            alinhadores Invisalign® e planejamento digital para o seu sorriso.
           </p>
           <p className="mt-4 text-xs text-muted-foreground tracking-wider">CRO 29705 · Ijuí/RS</p>
         </div>

@@ -29,10 +29,6 @@ export function FloatingWhatsApp() {
       )}
     >
       <MessageCircle className="h-6 w-6" />
-      <span
-        className="absolute inline-flex h-full w-full rounded-full bg-whatsapp opacity-40 animate-ping"
-        aria-hidden="true"
-      />
     </a>
   );
 }

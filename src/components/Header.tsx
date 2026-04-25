@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 const NAV = [
   { href: "#inicio", label: "Início" },
   { href: "#sobre", label: "Sobre" },
+  { href: "#ortodontia", label: "Ortodontia" },
   { href: "#tratamentos", label: "Tratamentos" },
   { href: "#como-funciona", label: "Como Funciona" },
   { href: "#contato", label: "Contato" },
@@ -84,7 +85,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="py-3 text-base text-foreground/85 border-b border-border/40 last:border-0"
+              className="py-3 text-base text-foreground/90 border-b border-border/40 last:border-0"
             >
               {item.label}
             </a>

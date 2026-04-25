@@ -1,10 +1,11 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
-import { Treatments } from "@/components/sections/Treatments";
 import { Orthodontics } from "@/components/sections/Orthodontics";
+import { VideoExperience } from "@/components/sections/VideoExperience";
+import { Treatments } from "@/components/sections/Treatments";
 import { HowItWorks } from "@/components/sections/HowItWorks";
-import { Differentials } from "@/components/sections/Differentials";
+import { HumanizedCare } from "@/components/sections/HumanizedCare";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
@@ -15,10 +16,11 @@ const Index = () => {
       <Header />
       <Hero />
       <About />
-      <Treatments />
       <Orthodontics />
+      <VideoExperience />
+      <Treatments />
       <HowItWorks />
-      <Differentials />
+      <HumanizedCare />
       <FinalCTA />
       <Footer />
       <FloatingWhatsApp />
