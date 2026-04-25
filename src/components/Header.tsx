@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logoFull from "@/assets/brand/logo-full.png";
+import logoIcon from "@/assets/brand/logo-icon.png";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { cn } from "@/lib/utils";
 
@@ -28,22 +28,17 @@ export function Header() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-smooth",
-        scrolled
-          ? "glass border-b border-border/50 py-3"
-          : "bg-transparent py-5"
+        scrolled ? "glass border-b border-border/50 py-3" : "bg-transparent py-5"
       )}
     >
       <div className="container-narrow flex items-center justify-between gap-6">
-        <a href="#inicio" className="flex items-center gap-3" aria-label="Página inicial">
-          <img
-            src={logoFull}
-            alt="Gabriel Paulo Rockenbach — Cirurgião-dentista | Ortodontista"
-            className={cn(
-              "transition-all duration-500 ease-smooth w-auto",
-              scrolled ? "h-9 md:h-10" : "h-10 md:h-12"
-            )}
-            loading="eager"
-          />
+        <a href="#inicio" className="group flex items-center gap-3" aria-label="Página inicial">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-primary/15 bg-card/75 shadow-soft transition-all duration-500 group-hover:border-primary/30">
+            <img src={logoIcon} alt="" className="h-6 w-6 object-contain" loading="eager" />
+          </span>
+          <span className="font-serif text-lg leading-none text-foreground md:text-xl">
+            Gabriel Paulo Rockenbach
+          </span>
         </a>
 
         <nav className="hidden lg:flex items-center gap-8" aria-label="Navegação principal">
@@ -51,7 +46,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm text-foreground/80 hover:text-primary transition-colors duration-300"
+              className="text-sm text-foreground/75 transition-colors duration-300 hover:text-primary"
             >
               {item.label}
             </a>
@@ -63,7 +58,7 @@ export function Header() {
         </div>
 
         <button
-          className="lg:hidden inline-flex items-center justify-center h-10 w-10 rounded-full text-foreground hover:bg-muted transition-colors"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-colors hover:bg-muted lg:hidden"
           onClick={() => setOpen((s) => !s)}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
           aria-expanded={open}
@@ -72,20 +67,19 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={cn(
-          "lg:hidden glass border-b border-border/50 overflow-hidden transition-[max-height,opacity] duration-500 ease-smooth",
+          "glass overflow-hidden border-b border-border/50 transition-[max-height,opacity] duration-500 ease-smooth lg:hidden",
           open ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
-        <nav className="container-narrow py-6 flex flex-col gap-2" aria-label="Navegação mobile">
+        <nav className="container-narrow flex flex-col gap-2 py-6" aria-label="Navegação mobile">
           {NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="py-3 text-base text-foreground/90 border-b border-border/40 last:border-0"
+              className="border-b border-border/40 py-3 text-base text-foreground/90 last:border-0"
             >
               {item.label}
             </a>

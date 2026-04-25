@@ -1,29 +1,29 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Stethoscope, UserRound } from "lucide-react";
+import { GraduationCap, HeartHandshake, Stethoscope } from "lucide-react";
 import sobreGabriel from "@/assets/photos/sobre-gabriel-recepcao.png";
 
-const cards = [
+const highlights = [
   {
     icon: GraduationCap,
-    title: "Formação Acadêmica",
-    text: "Graduação em Odontologia pela FASURGS, atualmente ATITUS, e especialista em Ortodontia. CRO 29705.",
+    title: "Formação em Odontologia",
+    text: "FASURGS, atualmente ATITUS",
   },
   {
     icon: Stethoscope,
-    title: "Experiência Clínica",
-    text: "Mais de 5 anos de atuação na área odontológica, com foco em aparelhos ortodônticos, Invisalign® e miniimplantes.",
+    title: "Especialista em Ortodontia",
+    text: "Invisalign®, aparelhos e miniimplantes",
   },
   {
-    icon: UserRound,
-    title: "Atendimento Personalizado",
-    text: "Planejamento individualizado, acompanhamento próximo e cuidado humanizado em todas as etapas do tratamento.",
+    icon: HeartHandshake,
+    title: "Atendimento próximo",
+    text: "Escuta, explicação clara e acompanhamento",
   },
 ];
 
 export function About() {
   return (
     <section id="sobre" className="relative overflow-hidden bg-background py-24 md:py-32">
-      <div className="container-narrow grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+      <div className="container-narrow grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-16">
         <motion.div
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -38,10 +38,10 @@ export function About() {
               className="aspect-[4/5] w-full rounded-[1.7rem] object-cover"
               loading="lazy"
             />
-            <div className="absolute -bottom-5 left-5 right-5 rounded-2xl border border-border/70 bg-card/95 px-5 py-4 shadow-card backdrop-blur-sm md:left-auto md:right-[-1.25rem] md:max-w-[230px]">
-              <p className="font-serif text-4xl leading-none text-primary">5+</p>
-              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                anos de experiência clínica
+            <div className="absolute -bottom-6 left-6 right-6 rounded-3xl border border-border/70 bg-card/95 px-6 py-5 shadow-card backdrop-blur-sm md:left-auto md:right-[-1.5rem] md:max-w-[245px]">
+              <p className="font-serif text-5xl leading-none text-primary">5+</p>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                anos de experiência clínica em tratamentos odontológicos e ortodônticos
               </p>
             </div>
           </div>
@@ -63,9 +63,10 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-3 max-w-2xl font-serif text-4xl leading-[1.12] text-foreground md:text-5xl text-balance"
+            className="mt-3 max-w-2xl font-serif text-4xl leading-[1.08] text-foreground md:text-5xl text-balance"
           >
-            Um cuidado especializado <span className="italic text-primary">para o seu sorriso</span>
+            Técnica, escuta e planejamento para um resultado{" "}
+            <span className="italic text-primary">natural</span>
           </motion.h2>
 
           <motion.div
@@ -73,36 +74,45 @@ export function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.16 }}
-            className="mt-6 max-w-3xl space-y-5 text-muted-foreground leading-relaxed text-pretty"
+            className="mt-7 grid gap-8 text-muted-foreground leading-relaxed text-pretty md:grid-cols-[1.1fr_0.9fr]"
           >
-            <p>
-              Sou cirurgião-dentista, especialista em Ortodontia, com foco em ortodontia
-              moderna, alinhadores Invisalign® e uso de miniimplantes. Atuo com planejamento
-              individualizado para cada paciente, unindo estética, função e saúde bucal para
-              resultados duradouros e naturais.
-            </p>
-            <p>
-              Formado pela Faculdade Especializada na Área da Saúde do Rio Grande do Sul -
-              FASURGS, atualmente ATITUS, e inscrito no Conselho Regional de Odontologia sob
-              o nº 29705. Com experiência clínica em tratamentos ortodônticos e uso de
-              tecnologias atuais, ofereço um atendimento humanizado, seguro e baseado em
-              evidências científicas.
-            </p>
+            <div className="space-y-5">
+              <p>
+                Sou cirurgião-dentista, especialista em Ortodontia, com foco em
+                ortodontia moderna, alinhadores Invisalign® e uso de miniimplantes.
+              </p>
+              <p>
+                Cada plano é construído a partir de diagnóstico, função, estética e
+                rotina do paciente, com acompanhamento próximo do início ao fim.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-border/70 bg-secondary/65 p-6">
+              <p className="text-xs uppercase tracking-[0.18em] text-accent">Registro profissional</p>
+              <p className="mt-3 font-serif text-2xl text-foreground">CRO 29705</p>
+              <p className="mt-3 text-sm leading-relaxed">
+                Formado pela FASURGS, atualmente ATITUS, com atuação clínica em
+                ortodontia, estética e cuidado preventivo.
+              </p>
+            </div>
           </motion.div>
 
-          <div className="mt-9 grid gap-4 md:grid-cols-3">
-            {cards.map((card, index) => (
+          <div className="mt-9 grid gap-3">
+            {highlights.map((item, index) => (
               <motion.article
-                key={card.title}
+                key={item.title}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.58, delay: 0.08 * index, ease: [0.22, 1, 0.36, 1] }}
-                className="rounded-2xl border border-border/70 bg-card/90 p-5 shadow-soft transition-all duration-500 hover:-translate-y-1 hover:shadow-card"
+                className="flex items-center gap-4 border-b border-border/70 py-4 last:border-b-0"
               >
-                <card.icon className="h-5 w-5 text-primary" />
-                <h3 className="mt-4 font-serif text-lg leading-tight text-foreground">{card.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{card.text}</p>
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary/15 bg-card text-primary shadow-soft">
+                  <item.icon className="h-4 w-4" />
+                </span>
+                <div>
+                  <h3 className="font-serif text-xl leading-tight text-foreground">{item.title}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{item.text}</p>
+                </div>
               </motion.article>
             ))}
           </div>
