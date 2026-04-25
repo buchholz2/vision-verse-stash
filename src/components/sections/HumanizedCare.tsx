@@ -9,20 +9,20 @@ const highlights = [
 
 export function HumanizedCare() {
   return (
-    <section className="relative overflow-hidden bg-gradient-soft py-24 md:py-32">
+    <section id="cuidado" className="relative scroll-mt-24 overflow-hidden bg-gradient-soft py-24 md:scroll-mt-28 md:py-32">
       <div className="container-wide grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-7"
+          className="lg:col-span-6"
         >
-          <div className="relative overflow-hidden rounded-[2.4rem] border border-border/70 bg-card/70 p-3 shadow-elegant">
+          <div className="relative mx-auto max-w-[620px] overflow-hidden rounded-[2.4rem] border border-border/70 bg-card/70 p-3 shadow-elegant lg:mx-0">
             <img
               src={atendimentoClinico}
               alt="Dr. Gabriel em consultório odontológico"
-              className="aspect-[5/4] w-full rounded-[1.9rem] object-cover object-[center_24%]"
+              className="aspect-[4/5] w-full rounded-[1.9rem] object-cover object-[center_12%]"
               loading="lazy"
             />
             <div className="absolute bottom-7 left-7 rounded-3xl border border-white/40 bg-card/90 p-5 shadow-card backdrop-blur-sm">
@@ -32,7 +32,7 @@ export function HumanizedCare() {
           </div>
         </motion.div>
 
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-6">
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
