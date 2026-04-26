@@ -13,7 +13,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        serif: ['"DM Serif Display"', '"Playfair Display"', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
       colors: {
@@ -78,9 +78,12 @@ export default {
         elegant: "var(--shadow-elegant)",
         card: "var(--shadow-card)",
         gold: "var(--shadow-gold)",
+        deep: "var(--shadow-deep)",
+        "blue-glow": "var(--shadow-blue-glow)",
       },
       transitionTimingFunction: {
         smooth: "cubic-bezier(0.22, 1, 0.36, 1)",
+        spring: "cubic-bezier(0.34, 1.56, 0.64, 1)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -108,12 +111,28 @@ export default {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        "pulse-ring": {
+          "0%": { transform: "scale(0.9)", opacity: "0.7" },
+          "70%, 100%": { transform: "scale(1.3)", opacity: "0" },
+        },
+        "count-up": {
+          "from": { opacity: "0", transform: "translateY(8px)" },
+          "to": { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both",
         "fade-in": "fade-in 0.8s ease-out both",
+        "float": "float 4s ease-in-out infinite",
+        "pulse-ring": "pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite",
+        "shimmer": "shimmer 2.5s linear infinite",
+        "count-up": "count-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both",
       },
     },
   },

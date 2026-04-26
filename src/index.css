@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,45 +6,46 @@
 
 /*
   Design system — Gabriel Paulo Rockenbach
-  Premium odontology / orthodontic clinic.
-  Off-white background, graphite text, sage green brand,
-  subtle gold accents. All colors in HSL.
+  Premium odontology / orthodontic clinic — v2 Premium Redesign
+  Azul-ardósia clínico + Off-white + Gold accent.
+  All colors in HSL.
 */
 
 @layer base {
   :root {
     /* Surfaces */
-    --background: 60 20% 98%;          /* #FAFAF7 off-white */
-    --foreground: 225 4% 19%;          /* #2F3034 graphite */
+    --background: 210 33% 98%;          /* #F5F8FB crisp clinical white */
+    --foreground: 215 25% 14%;          /* #1A2230 deep slate */
 
     --card: 0 0% 100%;
-    --card-foreground: 225 4% 19%;
+    --card-foreground: 215 25% 14%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 225 4% 19%;
+    --popover-foreground: 215 25% 14%;
 
-    /* Brand: sage green */
-    --primary: 137 7% 39%;             /* #5E6C61 deep sage */
-    --primary-foreground: 60 20% 98%;
-    --primary-soft: 131 7% 51%;        /* #7B8B7F sage */
+    /* Brand: slate blue — clínico, confiança, saúde */
+    --primary: 210 42% 28%;             /* #2A4D6E deep clinical blue */
+    --primary-foreground: 210 33% 98%;
+    --primary-soft: 210 35% 42%;        /* #3F6E97 medium blue */
+    --primary-light: 210 40% 92%;       /* #DAEAF7 very light blue */
 
-    --secondary: 60 14% 95%;
-    --secondary-foreground: 225 4% 19%;
+    --secondary: 210 25% 96%;
+    --secondary-foreground: 215 25% 14%;
 
-    --muted: 60 12% 94%;
-    --muted-foreground: 220 3% 45%;    /* #6E7074 */
+    --muted: 210 20% 94%;
+    --muted-foreground: 215 12% 48%;    /* slate gray */
 
-    /* Accent: discreet gold */
-    --accent: 38 47% 60%;              /* #C9A86A gold */
-    --accent-foreground: 225 4% 19%;
-    --accent-soft: 38 38% 88%;
+    /* Accent: gold of luxury */
+    --accent: 38 62% 55%;               /* #C8963A rich gold */
+    --accent-foreground: 215 25% 14%;
+    --accent-soft: 38 50% 92%;          /* #F7EDD9 warm cream */
 
     --destructive: 0 70% 45%;
-    --destructive-foreground: 60 20% 98%;
+    --destructive-foreground: 210 33% 98%;
 
-    --border: 60 8% 88%;
-    --input: 60 8% 88%;
-    --ring: 137 7% 39%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 210 42% 28%;
 
     --radius: 1rem;
 
@@ -52,21 +53,27 @@
     --whatsapp: 142 70% 38%;
     --whatsapp-foreground: 0 0% 100%;
 
-    /* Gradients — warm, quiet and editorial */
-    --gradient-sage: linear-gradient(135deg, hsl(137 7% 39%) 0%, hsl(131 7% 51%) 100%);
-    --gradient-soft: linear-gradient(180deg, hsl(42 28% 97%) 0%, hsl(60 14% 94%) 100%);
-    --gradient-hero:
-      linear-gradient(135deg, hsl(42 35% 98%) 0%, hsl(60 20% 96%) 48%, hsl(130 14% 91%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(38 47% 60%), hsl(38 55% 72%));
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 42% 28%) 0%, hsl(215 48% 20%) 100%);
+    --gradient-soft: linear-gradient(180deg, hsl(210 33% 98%) 0%, hsl(210 25% 96%) 100%);
+    --gradient-hero: radial-gradient(ellipse 80% 70% at 60% 40%, hsl(210 40% 92% / 0.55) 0%, transparent 70%),
+                     linear-gradient(160deg, hsl(210 33% 99%) 0%, hsl(210 28% 96%) 50%, hsl(38 40% 97%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 62% 55%), hsl(38 70% 68%));
+    --gradient-cta: linear-gradient(135deg, hsl(210 42% 22%) 0%, hsl(215 52% 15%) 60%, hsl(210 48% 18%) 100%);
+    --gradient-radial-blue: radial-gradient(circle at center, hsl(210 42% 28% / 0.08) 0%, transparent 70%);
+    --gradient-card-hover: linear-gradient(135deg, hsl(210 40% 99%) 0%, hsl(210 35% 96%) 100%);
 
-    /* Shadows */
-    --shadow-soft: 0 4px 24px -8px hsl(225 10% 20% / 0.08);
-    --shadow-elegant: 0 20px 60px -20px hsl(137 10% 25% / 0.18);
-    --shadow-card: 0 1px 3px hsl(225 10% 20% / 0.04), 0 8px 24px -8px hsl(225 10% 20% / 0.08);
-    --shadow-gold: 0 0 40px -10px hsl(38 47% 60% / 0.4);
+    /* Shadows — layered for depth */
+    --shadow-soft: 0 2px 12px -4px hsl(210 30% 20% / 0.08), 0 1px 3px hsl(210 30% 20% / 0.04);
+    --shadow-elegant: 0 20px 60px -20px hsl(210 42% 20% / 0.22), 0 4px 16px -4px hsl(210 42% 20% / 0.1);
+    --shadow-card: 0 1px 3px hsl(210 30% 20% / 0.04), 0 8px 24px -8px hsl(210 30% 20% / 0.08);
+    --shadow-gold: 0 0 40px -10px hsl(38 62% 55% / 0.45), 0 4px 16px hsl(38 62% 55% / 0.2);
+    --shadow-deep: 0 32px 80px -16px hsl(210 42% 14% / 0.28), 0 8px 24px hsl(210 42% 14% / 0.1);
+    --shadow-blue-glow: 0 0 48px -8px hsl(210 42% 28% / 0.35);
 
     /* Motion */
     --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
     --transition-elegant: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
@@ -89,43 +96,61 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
-    letter-spacing: 0;
+    letter-spacing: -0.01em;
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.18);
+    background: hsl(var(--primary) / 0.15);
     color: hsl(var(--foreground));
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  .text-pretty {
-    text-wrap: pretty;
-  }
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Glassmorphism */
   .glass {
-    background: hsl(var(--background) / 0.7);
-    backdrop-filter: saturate(140%) blur(14px);
-    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    background: hsl(var(--background) / 0.75);
+    backdrop-filter: saturate(160%) blur(16px);
+    -webkit-backdrop-filter: saturate(160%) blur(16px);
   }
   .glass-card {
-    background: hsl(0 0% 100% / 0.65);
-    backdrop-filter: saturate(140%) blur(10px);
-    -webkit-backdrop-filter: saturate(140%) blur(10px);
-    border: 1px solid hsl(var(--border) / 0.6);
+    background: hsl(0 0% 100% / 0.72);
+    backdrop-filter: saturate(150%) blur(12px);
+    -webkit-backdrop-filter: saturate(150%) blur(12px);
+    border: 1px solid hsl(var(--border) / 0.55);
   }
+  .glass-dark {
+    background: hsl(210 42% 14% / 0.72);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+  }
+
+  /* Dividers */
   .gold-divider {
     height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.6), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.7), transparent);
   }
+  .blue-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.35), transparent);
+  }
+
+  /* Grid pattern */
   .hairline-panel {
     background:
-      linear-gradient(90deg, hsl(var(--accent) / 0.12) 0 1px, transparent 1px),
-      linear-gradient(180deg, hsl(var(--border) / 0.24) 0 1px, transparent 1px);
-    background-size: 96px 96px;
+      linear-gradient(90deg, hsl(var(--primary) / 0.06) 0 1px, transparent 1px),
+      linear-gradient(180deg, hsl(var(--border) / 0.2) 0 1px, transparent 1px);
+    background-size: 80px 80px;
   }
+  .dot-pattern {
+    background-image: radial-gradient(hsl(var(--primary) / 0.08) 1.5px, transparent 1.5px);
+    background-size: 28px 28px;
+  }
+
+  /* Containers */
   .container-narrow {
     @apply mx-auto px-6 md:px-10;
     max-width: 1320px;
@@ -134,6 +159,102 @@
     @apply mx-auto px-6 md:px-10 2xl:px-12;
     max-width: 1480px;
   }
+
+  /* Gold border gradient */
+  .border-gold-gradient {
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  .border-gold-gradient::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: var(--gradient-gold);
+    z-index: -1;
+    opacity: 0.45;
+  }
+
+  /* Shimmer */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--accent-soft)) 0%,
+      hsl(var(--accent) / 0.25) 50%,
+      hsl(var(--accent-soft)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2.5s infinite;
+  }
+
+  /* Gradient text */
+  .text-gradient-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary-soft)), hsl(var(--primary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card hover */
+  .card-hover {
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.4s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Progress bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2.5px;
+    background: var(--gradient-gold);
+    z-index: 100;
+    transform-origin: left;
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* Number counter */
+  .stat-counter {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.9); opacity: 0.7; }
+  70%  { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {

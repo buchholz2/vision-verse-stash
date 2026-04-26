@@ -1,154 +1,261 @@
 import { motion } from "framer-motion";
-import { Braces, Crown, Layers, Scissors, ShieldCheck, Sun, Wrench } from "lucide-react";
+import {
+  BadgeCheck,
+  ClipboardCheck,
+  Crown,
+  Layers,
+  ShieldCheck,
+  Sparkles,
+  Link2,
+  Settings2,
+  Gem,
+  ScanSearch,
+  type LucideIcon,
+} from "lucide-react";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import tratamentosClinica from "@/assets/photos/real/gabriel-tratamentos-clinica.jpg";
 
 const treatments = [
   {
     icon: ShieldCheck,
+    area: "Prevenção",
     title: "Profilaxia",
-    desc: "Limpeza profissional para prevenção, saúde gengival e manutenção do sorriso.",
-    benefit: "Prevenção e cuidado contínuo",
+    desc: "Limpeza profissional para controlar biofilme, preservar a gengiva e manter o sorriso saudável.",
+    benefit: "Manutenção preventiva",
+    color: "hsl(210 42% 28%)",
   },
   {
-    icon: Sun,
+    icon: Sparkles,
+    area: "Estética",
     title: "Clareamento",
-    desc: "Tratamento estético para deixar o sorriso mais luminoso com segurança.",
-    benefit: "Estética com orientação profissional",
+    desc: "Indicação segura para iluminar o sorriso, respeitando sensibilidade, rotina e expectativa estética.",
+    benefit: "Sorriso mais luminoso",
+    color: "hsl(38 62% 55%)",
   },
   {
-    icon: Wrench,
+    icon: BadgeCheck,
+    area: "Conservadora",
     title: "Restaurações",
-    desc: "Recuperação de dentes com materiais modernos, buscando função e naturalidade.",
-    benefit: "Saúde e estética dental",
+    desc: "Recuperação de dentes com materiais atuais, buscando naturalidade, função e acabamento discreto.",
+    benefit: "Forma e função",
+    color: "hsl(210 42% 28%)",
   },
   {
     icon: Layers,
+    area: "Harmonia",
     title: "Facetas",
-    desc: "Reabilitação estética para melhorar forma, cor e harmonia do sorriso.",
-    benefit: "Harmonia estética",
+    desc: "Planejamento estético para ajustar forma, cor e proporção do sorriso com indicação criteriosa.",
+    benefit: "Estética planejada",
+    color: "hsl(38 62% 55%)",
   },
   {
     icon: Crown,
+    area: "Reabilitação",
     title: "Próteses",
-    desc: "Reabilitação funcional e estética para repor dentes ausentes.",
-    benefit: "Função e confiança",
+    desc: "Soluções para repor dentes ausentes e devolver conforto, confiança e estabilidade mastigatória.",
+    benefit: "Reabilitação oral",
+    color: "hsl(210 42% 28%)",
   },
   {
-    icon: Scissors,
+    icon: ClipboardCheck,
+    area: "Cirurgia",
     title: "Exodontia de sisos",
-    desc: "Procedimento planejado com foco em segurança, conforto e recuperação.",
-    benefit: "Planejamento e cuidado",
+    desc: "Procedimento planejado com avaliação clínica, orientação prévia e cuidado no pós-operatório.",
+    benefit: "Segurança e orientação",
+    color: "hsl(38 62% 55%)",
   },
 ];
 
-const orthodonticTreatments = [
-  "Aparelhos convencionais",
-  "Aparelhos autoligados",
-  "Aparelhos estéticos",
-  "Alinhadores Invisalign®",
+const orthodonticTreatments: { icon: LucideIcon; title: string; desc: string }[] = [
+  { icon: Link2,      title: "Aparelhos convencionais", desc: "Indicação clássica para alinhamento e correções ortodônticas." },
+  { icon: Settings2,  title: "Aparelhos autoligados",   desc: "Sistema moderno, com acompanhamento ajustado ao plano do caso." },
+  { icon: Gem,        title: "Aparelhos estéticos",     desc: "Alternativa em cerâmica para quem busca mais discrição." },
+  { icon: ScanSearch, title: "Alinhadores Invisalign®", desc: "Alinhadores transparentes, removíveis e planejados digitalmente." },
 ];
+
+const highlights = [
+  { value: "500+", label: "Pacientes atendidos" },
+  { value: "5+", label: "Anos de experiência" },
+  { value: "98%", label: "Satisfação" },
+];
+
 
 export function Treatments() {
   return (
-    <section id="tratamentos" className="relative overflow-hidden bg-[hsl(42_30%_97%)] py-24 md:py-32">
-      <div className="container-wide">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:sticky lg:top-28"
-            >
-              <p className="text-xs uppercase tracking-[0.28em] text-accent">Tratamentos</p>
-              <h2 className="mt-5 max-w-xl font-serif text-5xl leading-[1.03] text-foreground md:text-6xl text-balance">
-                Menos catálogo. Mais{" "}
-                <span className="italic text-primary">cuidado indicado.</span>
-              </h2>
-              <p className="mt-7 max-w-md text-lg leading-relaxed text-muted-foreground">
-                Tratamentos gerais apresentados de forma clara, sem transformar o site
-                em uma vitrine genérica de procedimentos.
-              </p>
-            </motion.div>
-          </div>
+    <section id="tratamentos" className="relative overflow-hidden bg-background py-24 md:py-32">
+      {/* Radial glow */}
+      <div
+        className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] opacity-[0.04]"
+        style={{ background: "radial-gradient(circle at top right, hsl(210 42% 28%) 0%, transparent 70%)" }}
+        aria-hidden="true"
+      />
 
-          <div className="lg:col-span-7">
-            <div className="border-t border-border/80">
-              {treatments.map((item, index) => (
-                <motion.article
-                  key={item.title}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.58, delay: 0.04 * index, ease: [0.22, 1, 0.36, 1] }}
-                  className="group grid gap-5 border-b border-border/80 py-8 transition-colors duration-500 md:grid-cols-[4rem_1fr_12rem] md:items-start"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/12 bg-card text-primary shadow-soft">
-                    <item.icon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <h3 className="font-serif text-3xl leading-tight text-foreground md:text-4xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
-                      {item.desc}
-                    </p>
-                  </div>
-                  <p className="text-sm font-medium leading-relaxed text-primary md:text-right">
-                    {item.benefit}
-                  </p>
-                </motion.article>
-              ))}
-            </div>
-          </div>
+      <div className="container-wide">
+        {/* Header */}
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7"
+          >
+            <p className="text-xs uppercase tracking-[0.28em] text-accent">Tratamentos</p>
+            <h2 className="mt-5 max-w-4xl font-serif text-5xl leading-[1.02] text-foreground md:text-7xl text-balance">
+              Cuidado completo para preservar e valorizar o{" "}
+              <span className="italic text-primary">seu sorriso.</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.08 }}
+            className="rounded-[2rem] border border-border/60 bg-card/70 p-6 shadow-soft lg:col-span-5"
+          >
+            <p className="text-xs uppercase tracking-[0.2em] text-accent">Indicação individualizada</p>
+            <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+              Cada procedimento entra no plano quando faz sentido para a saúde, a estética e a fase
+              do tratamento do paciente.
+            </p>
+          </motion.div>
         </div>
 
+        {/* Highlight numbers */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.65, delay: 0.1 }}
+          className="mt-12 grid grid-cols-3 divide-x divide-border/60 overflow-hidden rounded-[1.75rem] border border-border/60 bg-card/50 shadow-soft"
+        >
+          {highlights.map((h) => (
+            <div key={h.label} className="px-6 py-7 text-center">
+              <p className="font-serif text-4xl text-primary md:text-5xl">{h.value}</p>
+              <p className="mt-1.5 text-sm text-muted-foreground">{h.label}</p>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Treatment cards */}
+        <div className="mt-10 grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+          {treatments.map((item, index) => (
+            <motion.article
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.55, delay: 0.04 * index, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative overflow-hidden rounded-[1.75rem] border border-border/60 bg-card p-6 shadow-card card-hover"
+            >
+              {/* Hover gradient fill */}
+              <div
+                className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background: `linear-gradient(135deg, ${item.color}08 0%, ${item.color}04 100%)`,
+                }}
+                aria-hidden="true"
+              />
+
+              {/* Corner accent */}
+              <div
+                className="absolute right-0 top-0 h-20 w-24 rounded-bl-[1.75rem] opacity-60 transition-opacity duration-400 group-hover:opacity-100"
+                style={{
+                  background: `linear-gradient(225deg, ${item.color}12 0%, transparent 70%)`,
+                }}
+                aria-hidden="true"
+              />
+
+              <div className="relative flex h-full flex-col">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.22em] text-accent">{item.area}</p>
+                    <h3 className="mt-4 font-serif text-3xl leading-tight text-foreground">{item.title}</h3>
+                  </div>
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-border/60 bg-background text-primary shadow-soft transition-all duration-400 group-hover:border-primary/25 group-hover:bg-primary/8 group-hover:text-primary">
+                    <item.icon className="h-5 w-5" />
+                  </span>
+                </div>
+
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{item.desc}</p>
+
+                <div className="mt-auto pt-6">
+                  <div className="flex items-center gap-3 border-t border-border/60 pt-4">
+                    <span className="h-px w-8 bg-accent/60 transition-all duration-400 group-hover:w-14" aria-hidden="true" />
+                    <span className="text-sm font-medium text-primary">{item.benefit}</span>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        {/* Orthodontic CTA block */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-20 overflow-hidden rounded-[2.2rem] bg-card shadow-elegant"
+          className="mt-16 overflow-hidden rounded-[2.4rem] shadow-deep"
+          style={{ background: "var(--gradient-cta)" }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12">
-            <div className="relative min-h-[420px] lg:col-span-6">
+          {/* Dots pattern overlay */}
+          <div
+            className="pointer-events-none absolute inset-0 rounded-[2.4rem] opacity-[0.035]"
+            style={{
+              backgroundImage: "radial-gradient(hsl(0 0% 100%) 1.5px, transparent 1.5px)",
+              backgroundSize: "28px 28px",
+            }}
+            aria-hidden="true"
+          />
+
+          <div className="relative grid grid-cols-1 lg:grid-cols-12">
+            <div className="relative min-h-[420px] lg:col-span-4">
               <img
                 src={tratamentosClinica}
                 alt="Dr. Gabriel em consultório odontológico"
-                className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
+                className="absolute inset-0 h-full w-full object-cover object-[center_16%]"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[hsl(215_48%_15%)/60]" aria-hidden="true" />
             </div>
 
-            <div className="bg-primary p-8 text-primary-foreground md:p-12 lg:col-span-6">
+            <div className="relative p-8 text-primary-foreground md:p-12 lg:col-span-8 lg:p-14">
               <p className="text-xs uppercase tracking-[0.28em] text-accent">Ortodontia</p>
-              <h3 className="mt-5 max-w-xl font-serif text-4xl leading-[1.04] md:text-6xl text-balance">
-                O tratamento principal ganha espaço próprio.
+              <h3 className="mt-5 max-w-3xl font-serif text-4xl leading-[1.03] md:text-5xl text-balance">
+                O alinhamento do sorriso como foco do planejamento.
               </h3>
-              <p className="mt-6 max-w-xl text-primary-foreground/78 leading-relaxed md:text-lg">
-                A escolha entre aparelho convencional, autoligado, estético ou Invisalign®
-                acontece depois de avaliação e planejamento individualizado.
+              <p className="mt-5 max-w-2xl text-primary-foreground/72 leading-relaxed">
+                Aparelhos e alinhadores são escolhidos após avaliação clínica, diagnóstico e definição
+                de um caminho compatível com a rotina e o objetivo de cada paciente.
               </p>
 
-              <div className="mt-9 border-y border-primary-foreground/16">
-                {orthodonticTreatments.map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-4 border-b border-primary-foreground/16 py-5 last:border-b-0"
-                  >
-                    <Braces className="h-5 w-5 text-accent" />
-                    <span className="font-medium text-primary-foreground/92">{item}</span>
-                  </div>
-                ))}
+              <div className="mt-9 grid gap-3 sm:grid-cols-2">
+                {orthodonticTreatments.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={item.title}
+                      className="group flex items-start gap-3 rounded-2xl border border-white/10 bg-white/6 p-4 transition-all duration-300 hover:border-accent/25 hover:bg-white/9"
+                    >
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent shadow-[0_0_18px_-6px_hsl(38_62%_55%/0.5)] transition-colors duration-300 group-hover:border-accent/50 group-hover:bg-accent/15">
+                        <Icon className="h-5 w-5" strokeWidth={1.6} />
+                      </span>
+                      <div>
+                        <h4 className="text-sm font-semibold text-primary-foreground">{item.title}</h4>
+                        <p className="mt-1.5 text-xs leading-relaxed text-primary-foreground/55">{item.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
               <div className="mt-9">
                 <WhatsAppButton
                   size="lg"
                   variant="outline"
-                  className="border-primary-foreground/30 bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/15"
+                  className="border-white/25 bg-white/10 text-primary-foreground hover:bg-white/18 hover:border-white/35"
                 >
                   Quero avaliar meu sorriso
                 </WhatsAppButton>
