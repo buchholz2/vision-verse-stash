@@ -47,8 +47,8 @@ fi
 # --- 3. Exportar a Imagem para Arquivo .tar ---
 log_message "Exportando imagem para arquivo .tar..."
 
-WEB_IMAGE="site-dentista-gabriel:latest"
-API_IMAGE="site-entista-gabriel:latest"
+WEB_IMAGE="site-dentista-gabriel-web:latest"
+API_IMAGE="site-dentista-gabriel-api:latest"
 
 # Salva ambas as imagens em um único arquivo
 if docker save -o website_images.tar $WEB_IMAGE $API_IMAGE; then
