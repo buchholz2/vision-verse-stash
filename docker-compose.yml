@@ -1,26 +1,26 @@
 services:
-  api:
-    container_name: site-dentista-gabriel-api
-    build:
-      context: .
-      dockerfile: Dockerfile.api
-    image: site-dentista-gabriel-api:latest
-    restart: always
-    environment:
-      - PORT=3001
-      - RESEND_API_KEY=${RESEND_API_KEY}
-      - MAIL_TO=${MAIL_TO}
-      - MAIL_FROM=${MAIL_FROM}
-    networks:
-      - nginxproxyman
+#  api:
+#    container_name: site-dentista-gabriel-api
+#    build:
+#      context: .
+#      dockerfile: Dockerfile.api
+#    image: site-dentista-gabriel-api:latest
+#    restart: always
+#    environment:
+#      - PORT=3001
+#      - RESEND_API_KEY=${RESEND_API_KEY}
+#      - MAIL_TO=${MAIL_TO}
+#      - MAIL_FROM=${MAIL_FROM}
+#    networks:
+#      - nginxproxyman
 
-  arnaldo-web:
+  dentista-gabriel-web:
     container_name: site-dentista-gabriel-web
     build: .
     image: site-dentista-gabriel-web:latest
     restart: always
-    depends_on:
-      - api
+    #depends_on:
+    #  - api
     networks:
       - nginxproxyman
 
