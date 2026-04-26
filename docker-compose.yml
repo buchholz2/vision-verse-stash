@@ -18,6 +18,12 @@ services:
     container_name: site-dentista-gabriel-web
     build: .
     image: site-dentista-gabriel-web:latest
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 32M
     restart: always
     #depends_on:
     #  - api
