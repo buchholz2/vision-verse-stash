@@ -48,10 +48,10 @@ fi
 log_message "Exportando imagem para arquivo .tar..."
 
 WEB_IMAGE="site-dentista-gabriel-web:latest"
-API_IMAGE="site-dentista-gabriel-api:latest"
+#API_IMAGE="site-dentista-gabriel-api:latest"
 
 # Salva ambas as imagens em um único arquivo
-if docker save -o website_images.tar $WEB_IMAGE $API_IMAGE; then
+if docker save -o website_images.tar $WEB_IMAGE ; then
     log_message "Imagens (Web e API) salvas com sucesso em website_images.tar."
 else
     log_message "ERRO: Falha ao salvar as imagens."
