@@ -6,7 +6,6 @@ import { VideoExperience } from "@/components/sections/VideoExperience";
 import { Treatments } from "@/components/sections/Treatments";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { HumanizedCare } from "@/components/sections/HumanizedCare";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
@@ -22,7 +21,6 @@ const Index = () => {
       <Treatments />
       <HowItWorks />
       <HumanizedCare />
-      <Testimonials />
       <FinalCTA />
       <Footer />
       <FloatingWhatsApp />

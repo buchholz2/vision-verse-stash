@@ -155,7 +155,7 @@ export function FinalCTA() {
           <span className="h-px w-5 bg-white/20 sm:h-3.5 sm:w-px" aria-hidden="true" />
           <span>Ijuí/RS</span>
           <span className="h-px w-5 bg-white/20 sm:h-3.5 sm:w-px" aria-hidden="true" />
-          <span>Invisalign® Provider</span>
+          <span>Invisalign® Doctor</span>
           <span className="h-px w-5 bg-white/20 sm:h-3.5 sm:w-px" aria-hidden="true" />
           <span>Especialista em Ortodontia</span>
         </motion.div>

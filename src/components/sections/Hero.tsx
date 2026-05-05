@@ -8,7 +8,7 @@ import heroGabriel from "@/assets/photos/real/gabriel-hero-clinica.jpg";
 const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } };
 
 const proof = [
-  { label: "Invisalign® Provider", icon: CheckCircle2 },
+  { label: "Invisalign® Doctor", icon: CheckCircle2 },
   { label: "Planejamento digital", icon: CheckCircle2 },
   { label: "Atendimento humanizado", icon: CheckCircle2 },
 ];
@@ -186,7 +186,7 @@ export function Hero() {
                   <div className="flex items-center gap-1">
                     {[...Array(5)].map((_, i) => <Star key={i} className="h-3.5 w-3.5 fill-accent text-accent" />)}
                   </div>
-                  <p className="mt-1 text-[11px] font-medium text-foreground">Invisalign® Provider</p>
+                  <p className="mt-1 text-[11px] font-medium text-foreground">Invisalign® Doctor</p>
                 </motion.div>
               </div>
             </div>

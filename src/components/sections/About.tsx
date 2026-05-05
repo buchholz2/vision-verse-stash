@@ -4,7 +4,7 @@ import { GraduationCap, Award, Heart } from "lucide-react";
 import sobreGabriel from "@/assets/photos/real/gabriel-sobre-sofa.jpg";
 
 const highlights = [
-  { icon: GraduationCap, title: "Formação em Odontologia", text: "FASURGS, atualmente ATITUS" },
+  { icon: GraduationCap, title: "Formação em Odontologia", text: "FASURGS" },
   { icon: Award, title: "Especialista em Ortodontia", text: "Invisalign®, aparelhos e miniimplantes" },
   { icon: Heart, title: "Atendimento próximo", text: "Escuta, explicação clara e acompanhamento" },
 ];
@@ -123,7 +123,7 @@ export function About() {
               <p className="mt-3 font-serif text-2xl text-foreground">CRO 29705</p>
               <div className="mt-3 h-px bg-border/60" />
               <p className="mt-3 text-sm leading-relaxed">
-                Formado pela FASURGS, atualmente ATITUS, com atuação clínica em
+                Formado pela FASURGS, com atuação clínica em
                 ortodontia, estética e cuidado preventivo.
               </p>
             </div>

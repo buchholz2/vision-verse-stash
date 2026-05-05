@@ -137,7 +137,7 @@ export function Orthodontics() {
               className="absolute bottom-8 left-8 glass-dark rounded-2xl px-5 py-3 shadow-deep"
             >
               <p className="text-[10px] uppercase tracking-[0.2em] text-white/55">certificação</p>
-              <p className="mt-1 font-serif text-lg leading-tight text-white">Invisalign® Provider</p>
+              <p className="mt-1 font-serif text-lg leading-tight text-white">Invisalign® Doctor</p>
             </motion.div>
           </div>
         </motion.div>

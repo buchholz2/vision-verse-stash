@@ -31,7 +31,7 @@ export function Footer() {
 
           {/* Credential chips */}
           <div className="mt-6 flex flex-wrap gap-2">
-            {["CRO 29705", "Invisalign® Provider", "Ijuí/RS"].map((label) => (
+            {["CRO 29705", "Invisalign® Doctor", "Ijuí/RS"].map((label) => (
               <span
                 key={label}
                 className="rounded-full border border-white/12 bg-white/6 px-3 py-1 text-xs text-primary-foreground/60"

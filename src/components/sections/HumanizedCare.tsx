@@ -87,7 +87,7 @@ export function HumanizedCare() {
             <div>
               <p className="text-xs uppercase tracking-[0.18em] text-accent">CRO 29705 · Ijuí/RS</p>
               <p className="mt-0.5 text-sm text-muted-foreground">
-                Especialista em Ortodontia formado pela FASURGS (ATITUS)
+                Especialista em Ortodontia formado pela FASURGS
               </p>
             </div>
           </motion.div>
