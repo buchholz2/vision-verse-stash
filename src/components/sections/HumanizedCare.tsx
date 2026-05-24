@@ -5,7 +5,7 @@ import atendimentoClinico from "@/assets/photos/real/gabriel-cuidado-clinica.jpg
 
 const highlights = [
   { icon: MessageSquare, title: "Explicação clara",     desc: "Cada etapa do tratamento é apresentada de forma acessível e transparente." },
-  { icon: Shield,        title: "Conforto garantido",   desc: "Protocolos pensados para minimizar desconforto durante o atendimento." },
+  { icon: Shield,        title: "Conforto no atendimento",   desc: "Protocolos voltados a reduzir desconfortos durante o atendimento." },
   { icon: LayoutList,    title: "Plano individualizado", desc: "Soluções construídas com base no perfil, rotina e objetivos de cada paciente." },
 ];
 
@@ -105,6 +105,8 @@ export function HumanizedCare() {
               <motion.img
                 src={atendimentoClinico}
                 alt="Dr. Gabriel em consultório odontológico"
+                width={1600}
+                height={2400}
                 className="h-[115%] w-full object-cover object-[center_12%]"
                 style={{ y: imgY }} loading="lazy"
               />

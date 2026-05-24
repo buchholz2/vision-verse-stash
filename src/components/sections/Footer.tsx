@@ -1,14 +1,21 @@
 import { Instagram, MessageCircle, MapPin, Clock } from "lucide-react";
-import logoFull from "@/assets/brand/logo-full.png";
+import logoFull from "@/assets/brand/logo-full-web.png";
 import { whatsappLink, INSTAGRAM_URL, PHONE_DISPLAY } from "@/lib/contact";
 
 const links = [
-  { href: "#inicio", label: "Início" },
-  { href: "#sobre", label: "Sobre" },
-  { href: "#ortodontia", label: "Ortodontia" },
-  { href: "#tratamentos", label: "Tratamentos" },
-  { href: "#como-funciona", label: "Como Funciona" },
-  { href: "#contato", label: "Contato" },
+  { href: "/#inicio", label: "Início" },
+  { href: "/#sobre", label: "Sobre" },
+  { href: "/#ortodontia", label: "Ortodontia" },
+  { href: "/#tratamentos", label: "Tratamentos" },
+  { href: "/#seo-local", label: "Ijuí/RS" },
+  { href: "/#contato", label: "Contato" },
+];
+
+const localLinks = [
+  { href: "/ortodontista-em-ijui", label: "Ortodontista em Ijuí" },
+  { href: "/invisalign-em-ijui", label: "Invisalign em Ijuí" },
+  { href: "/aparelho-transparente-em-ijui", label: "Aparelho transparente" },
+  { href: "/dentista-em-ijui", label: "Dentista em Ijuí" },
 ];
 
 export function Footer() {
@@ -21,6 +28,8 @@ export function Footer() {
           <img
             src={logoFull}
             alt="Gabriel Paulo Rockenbach - cirurgião-dentista e ortodontista"
+            width={900}
+            height={249}
             className="h-16 w-auto max-w-full object-contain brightness-0 invert opacity-90 md:h-20"
             loading="lazy"
           />
@@ -79,6 +88,19 @@ export function Footer() {
               </li>
             ))}
           </ul>
+          <h4 className="mt-8 text-sm font-semibold uppercase tracking-[0.15em] text-primary-foreground/80">Páginas locais</h4>
+          <ul className="mt-5 space-y-2.5">
+            {localLinks.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  className="text-sm text-primary-foreground/50 transition-colors duration-200 hover:text-primary-foreground/90"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Contact column */}
@@ -117,7 +139,10 @@ export function Footer() {
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/6">
                 <MapPin className="h-4 w-4 text-accent" />
               </span>
-              Ijuí, Rio Grande do Sul — RS
+              <span>
+                Ijuí, Rio Grande do Sul — RS<br />
+                TODO: Adicionar endereço completo do consultório aqui.
+              </span>
             </li>
             <li className="flex items-start gap-3 text-sm text-primary-foreground/50">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/6">

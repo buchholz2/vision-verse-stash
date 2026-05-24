@@ -7,7 +7,7 @@ import consultaPlanejamento from "@/assets/photos/real/gabriel-planejamento-mesa
 const steps = [
   { icon: MessageCircle, title: "Primeiro contato", desc: "Você envia uma mensagem pelo WhatsApp e compartilha sua necessidade ou dúvida inicial." },
   { icon: Stethoscope, title: "Avaliação clínica", desc: "Consulta completa para entender seu caso, histórico e objetivos com o tratamento." },
-  { icon: FileText, title: "Plano individual", desc: "O melhor caminho é definido com base no diagnóstico: ortodontia, alinhadores, estética ou prevenção." },
+  { icon: FileText, title: "Plano individual", desc: "Um caminho de tratamento é definido com base no diagnóstico: ortodontia, alinhadores, estética ou prevenção." },
   { icon: HeartHandshake, title: "Acompanhamento", desc: "Cada etapa é acompanhada de forma próxima, segura e humanizada." },
 ];
 
@@ -88,6 +88,8 @@ export function HowItWorks() {
               <motion.img
                 src={consultaPlanejamento}
                 alt="Dr. Gabriel em momento de planejamento clínico"
+                width={1600}
+                height={2400}
                 className="absolute inset-0 h-[115%] w-full object-cover object-[center_34%]"
                 style={{ y: imgY }}
                 loading="lazy"

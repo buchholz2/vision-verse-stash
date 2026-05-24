@@ -1,23 +1,23 @@
 import { useEffect, useState, useRef } from "react";
 import { Menu, X } from "lucide-react";
-import logoFull from "@/assets/brand/logo-full.png";
+import logoFull from "@/assets/brand/logo-full-web.png";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "#inicio", label: "Início" },
-  { href: "#sobre", label: "Sobre" },
-  { href: "#ortodontia", label: "Ortodontia" },
-  { href: "#tratamentos", label: "Tratamentos" },
-  { href: "#como-funciona", label: "Como Funciona" },
-  { href: "#contato", label: "Contato" },
+  { href: "/#inicio", sectionId: "inicio", label: "Início" },
+  { href: "/#sobre", sectionId: "sobre", label: "Sobre" },
+  { href: "/#ortodontia", sectionId: "ortodontia", label: "Ortodontia" },
+  { href: "/#tratamentos", sectionId: "tratamentos", label: "Tratamentos" },
+  { href: "/#seo-local", sectionId: "seo-local", label: "Ijuí/RS" },
+  { href: "/#contato", sectionId: "contato", label: "Contato" },
 ];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState("#inicio");
+  const [activeSection, setActiveSection] = useState("inicio");
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -35,12 +35,12 @@ export function Header() {
 
   // Intersection Observer for active section
   useEffect(() => {
-    const sectionIds = NAV.map((item) => item.href.replace("#", ""));
+    const sectionIds = NAV.map((item) => item.sectionId);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(`#${entry.target.id}`);
+            setActiveSection(entry.target.id);
           }
         });
       },
@@ -72,11 +72,13 @@ export function Header() {
         )}
       >
         <div className="container-wide flex items-center justify-between gap-6">
-          <a href="#inicio" className="group flex min-w-0 items-center" aria-label="Página inicial">
+          <a href="/" className="group flex min-w-0 items-center" aria-label="Página inicial">
             <img
               src={logoFull}
               alt="Gabriel Paulo Rockenbach - cirurgião-dentista e ortodontista"
-              className="h-11 w-auto max-w-[235px] object-contain transition-all duration-500 group-hover:opacity-80 group-hover:scale-[0.98] sm:h-12 sm:max-w-[330px] lg:h-13 lg:max-w-[380px]"
+              width={900}
+              height={249}
+              className="h-11 w-auto max-w-[235px] object-contain transition-all duration-500 group-hover:opacity-80 group-hover:scale-[0.98] sm:h-12 sm:max-w-[330px] lg:h-[3.25rem] lg:max-w-[380px]"
               loading="eager"
             />
           </a>
@@ -88,13 +90,13 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   "relative text-sm transition-colors duration-300 pb-0.5",
-                  activeSection === item.href
+                  activeSection === item.sectionId
                     ? "text-primary font-medium"
                     : "text-foreground/65 hover:text-primary"
                 )}
               >
                 {item.label}
-                {activeSection === item.href && (
+                {activeSection === item.sectionId && (
                   <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full bg-gradient-gold animate-fade-in" aria-hidden="true" />
                 )}
               </a>
@@ -131,12 +133,12 @@ export function Header() {
                 onClick={() => setOpen(false)}
                 className={cn(
                   "flex items-center gap-3 border-b border-border/30 py-4 text-base last:border-0 transition-colors duration-200",
-                  activeSection === item.href
+                  activeSection === item.sectionId
                     ? "text-primary font-medium"
                     : "text-foreground/80 hover:text-primary"
                 )}
               >
-                {activeSection === item.href && (
+                {activeSection === item.sectionId && (
                   <span className="h-1.5 w-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
                 )}
                 {item.label}

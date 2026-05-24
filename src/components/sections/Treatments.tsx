@@ -76,7 +76,7 @@ const orthodonticTreatments: { icon: LucideIcon; title: string; desc: string }[]
 const highlights = [
   { value: "500+", label: "Pacientes atendidos" },
   { value: "5+", label: "Anos de experiência" },
-  { value: "98%", label: "Satisfação" },
+  { value: "29705", label: "CRO" },
 ];
 
 
@@ -215,6 +215,8 @@ export function Treatments() {
               <img
                 src={tratamentosClinica}
                 alt="Dr. Gabriel em consultório odontológico"
+                width={1600}
+                height={2400}
                 className="absolute inset-0 h-full w-full object-cover object-[center_16%]"
                 loading="lazy"
               />

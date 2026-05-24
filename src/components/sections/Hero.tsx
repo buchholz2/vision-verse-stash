@@ -30,7 +30,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 const stats = [
   { label: "Anos de experiência", value: 5, suffix: "+" },
   { label: "Pacientes atendidos", value: 500, suffix: "+" },
-  { label: "Satisfação dos pacientes", value: 98, suffix: "%" },
+  { label: "CRO", value: 29705, suffix: "" },
 ];
 
 
@@ -91,18 +91,18 @@ export function Hero() {
             </motion.div>
 
             <motion.h1 variants={fadeUp} initial="hidden" animate="show" transition={{ duration: 0.85, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-7 max-w-[720px] font-serif text-6xl leading-[0.93] text-foreground sm:text-7xl xl:text-[5.5rem] text-balance"
+              className="mt-7 max-w-[780px] font-serif text-5xl leading-[1.02] text-foreground sm:text-6xl xl:text-[5rem] text-balance"
             >
-              Ortodontia moderna em{" "}
+              Ortodontista em Ijuí especializado em{" "}
               <em className="not-italic" style={{ background: "var(--gradient-gold)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                detalhes.
+                Invisalign e aparelho transparente.
               </em>
             </motion.h1>
 
             <motion.p variants={fadeUp} initial="hidden" animate="show" transition={{ duration: 0.7, delay: 0.18 }}
               className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl text-pretty"
             >
-              Invisalign®, planejamento digital e cuidado clínico individualizado para alinhar o sorriso com naturalidade e precisão.
+              Tratamento ortodôntico com Invisalign®, planejamento digital e cuidado clínico individualizado para avaliar cada sorriso com clareza.
             </motion.p>
 
             <motion.div variants={fadeUp} initial="hidden" animate="show" transition={{ duration: 0.7, delay: 0.28 }}
@@ -157,6 +157,8 @@ export function Hero() {
                 <div className="absolute inset-0 rounded-[2.4rem] ring-1 ring-inset ring-white/40 pointer-events-none" aria-hidden="true" />
                 <div className="h-[480px] overflow-hidden rounded-[1.9rem] md:h-[580px] lg:h-[640px] xl:h-[680px]">
                   <motion.img src={heroGabriel} alt="Dr. Gabriel Paulo Rockenbach em sua clínica"
+                    width={1600}
+                    height={2400}
                     className="h-[130%] w-full object-cover object-[center_24%]"
                     style={{ y: photoY }} loading="eager"
                   />

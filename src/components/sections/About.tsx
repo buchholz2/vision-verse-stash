@@ -51,6 +51,8 @@ export function About() {
               <motion.img
                 src={sobreGabriel}
                 alt="Dr. Gabriel Paulo Rockenbach em retrato institucional"
+                width={1600}
+                height={2400}
                 className="h-[115%] w-full object-cover object-[center_34%]"
                 style={{ y: imgY }}
                 loading="lazy"
@@ -97,8 +99,8 @@ export function About() {
             transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="mt-4 max-w-3xl font-serif text-4xl leading-[1.06] text-foreground md:text-6xl text-balance"
           >
-            Técnica, escuta e planejamento para um resultado{" "}
-            <span className="italic text-primary">natural</span>
+            Técnica, escuta e planejamento para um cuidado{" "}
+            <span className="italic text-primary">individual</span>
           </motion.h2>
 
           <motion.div

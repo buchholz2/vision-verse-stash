@@ -3,10 +3,12 @@ import { motion } from "framer-motion";
 const videos = [
   {
     src: "/videos/reels-atendimento-01.mp4",
+    poster: "/images/poster-01.jpg",
     label: "Procedimento clínico",
   },
   {
     src: "/videos/reels-atendimento-02.mp4",
+    poster: "/images/poster-02.jpg",
     label: "Materiais e preparo",
   },
 ];
@@ -76,6 +78,7 @@ export function VideoExperience() {
                     muted
                     loop
                     playsInline
+                    poster={video.poster}
                     preload="metadata"
                     aria-label={video.label}
                   >

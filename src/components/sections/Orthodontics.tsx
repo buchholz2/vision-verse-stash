@@ -127,6 +127,8 @@ export function Orthodontics() {
               <motion.img
                 src={especialidadeAlinhadores}
                 alt="Dr. Gabriel em ambiente clínico odontológico"
+                width={1600}
+                height={2400}
                 className="h-[115%] w-full object-cover object-[center_32%]"
                 style={{ y: imgY }} loading="lazy"
               />

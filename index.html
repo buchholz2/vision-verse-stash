@@ -7,42 +7,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#FAFAF7" />
 
-    <title>Dr. Gabriel Paulo Rockenbach | Ortodontia Moderna e Invisalign® em Ijuí/RS</title>
+    <title>Ortodontista em Ijuí | Invisalign e Aparelho Transparente | Dr. Gabriel Rockenbach</title>
     <meta
       name="description"
-      content="Ortodontia moderna, alinhadores Invisalign®, planejamento digital e atendimento odontológico humanizado com Dr. Gabriel Paulo Rockenbach, CRO 29705, em Ijuí/RS."
+      content="Atendimento odontológico em Ijuí/RS com foco em ortodontia moderna, Invisalign e alinhadores transparentes. Agende sua avaliação com o Dr. Gabriel Rockenbach."
     />
     <meta name="author" content="Gabriel Paulo Rockenbach" />
-    <link rel="canonical" href="/" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://dentista-gabriel.buchholz.net.br/" />
 
-    <meta property="og:title" content="Dr. Gabriel Paulo Rockenbach | Ortodontia Moderna e Invisalign®" />
+    <meta property="og:title" content="Ortodontista em Ijuí | Invisalign e Aparelho Transparente | Dr. Gabriel Rockenbach" />
     <meta
       property="og:description"
-      content="Ortodontia moderna, alinhadores Invisalign® e planejamento digital com atendimento humanizado. CRO 29705 · Ijuí/RS."
+      content="Atendimento odontológico em Ijuí/RS com foco em ortodontia moderna, Invisalign e alinhadores transparentes."
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content="https://dentista-gabriel.buchholz.net.br/" />
+    <meta property="og:site_name" content="Dr. Gabriel Paulo Rockenbach" />
+    <meta property="og:image" content="https://dentista-gabriel.buchholz.net.br/og-image.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Dr. Gabriel Paulo Rockenbach | Ortodontia Moderna e Invisalign®" />
+    <meta name="twitter:title" content="Ortodontista em Ijuí | Invisalign e Aparelho Transparente | Dr. Gabriel Rockenbach" />
     <meta
       name="twitter:description"
-      content="Ortodontia moderna, Invisalign® e planejamento digital. Atendimento humanizado em Ijuí/RS — CRO 29705."
+      content="Atendimento odontológico em Ijuí/RS com foco em ortodontia moderna, Invisalign e alinhadores transparentes."
     />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:image" content="https://dentista-gabriel.buchholz.net.br/og-image.png" />
 
+    <!-- TODO: Adicionar endereço completo do consultório ao JSON-LD quando o dado real estiver disponível. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Dentist",
-        "name": "Dr. Gabriel Paulo Rockenbach",
-        "description": "Cirurgião-dentista e especialista em Ortodontia. Alinhadores Invisalign®, planejamento digital, miniimplantes e cuidado humanizado.",
-        "medicalSpecialty": "Orthodontics",
-        "areaServed": "Ijuí, RS",
-        "telephone": "+55 55 9 9669-3480",
-        "sameAs": ["https://www.instagram.com/gabirockenbachp/"],
-        "image": "/og-image.png"
+        "@graph": [
+          {
+            "@type": ["Dentist", "LocalBusiness"],
+            "@id": "https://dentista-gabriel.buchholz.net.br/#dentist",
+            "name": "Dr. Gabriel Paulo Rockenbach",
+            "url": "https://dentista-gabriel.buchholz.net.br/",
+            "image": "https://dentista-gabriel.buchholz.net.br/og-image.png",
+            "telephone": "+5555996693480",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ijuí",
+              "addressRegion": "RS",
+              "addressCountry": "BR"
+            },
+            "areaServed": [
+              { "@type": "City", "name": "Ijuí" },
+              { "@type": "AdministrativeArea", "name": "Rio Grande do Sul" }
+            ],
+            "medicalSpecialty": "Orthodontics",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "18:00"
+              }
+            ],
+            "sameAs": ["https://www.instagram.com/gabirockenbachp/"]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://dentista-gabriel.buchholz.net.br/#gabriel-rockenbach",
+            "name": "Dr. Gabriel Paulo Rockenbach",
+            "jobTitle": "Cirurgião-dentista | Especialista em Ortodontia",
+            "identifier": "CRO 29705",
+            "worksFor": { "@id": "https://dentista-gabriel.buchholz.net.br/#dentist" },
+            "sameAs": ["https://www.instagram.com/gabirockenbachp/"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://dentista-gabriel.buchholz.net.br/#website",
+            "name": "Dr. Gabriel Paulo Rockenbach",
+            "url": "https://dentista-gabriel.buchholz.net.br/",
+            "inLanguage": "pt-BR",
+            "publisher": { "@id": "https://dentista-gabriel.buchholz.net.br/#dentist" }
+          }
+        ]
       }
     </script>
   </head>

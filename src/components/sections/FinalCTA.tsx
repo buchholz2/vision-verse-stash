@@ -115,7 +115,7 @@ export function FinalCTA() {
           className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-primary-foreground/75 text-pretty"
         >
           Agende sua avaliação e descubra o tratamento mais indicado para o seu caso.
-          Atendimento humanizado, planejamento digital e resultado natural.
+          Atendimento humanizado, planejamento digital e expectativas realistas para o tratamento.
         </motion.p>
 
         <motion.div
