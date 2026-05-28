@@ -49,9 +49,9 @@ export const homeFaqs: FaqItem[] = [
 export const localPages: Record<string, LocalPage> = {
   "ortodontista-em-ijui": {
     path: "/ortodontista-em-ijui",
-    title: "Ortodontista em Ijuí | Aparelhos e Alinhadores | Dr. Gabriel Rockenbach",
+    title: "Ortodontista em Ijuí | Tratamento Ortodôntico | Dr. Gabriel Rockenbach",
     description:
-      "Tratamento ortodôntico em Ijuí/RS com avaliação profissional, aparelho fixo, aparelho estético e alinhadores transparentes. Fale com o Dr. Gabriel Rockenbach.",
+      "Procura ortodontista em Ijuí/RS? Conheça o atendimento do Dr. Gabriel Rockenbach com foco em ortodontia, aparelho e alinhadores transparentes.",
     eyebrow: "Ortodontia em Ijuí/RS",
     h1: "Ortodontista em Ijuí para tratamento com aparelho e alinhadores",
     intro:
@@ -113,7 +113,7 @@ export const localPages: Record<string, LocalPage> = {
     path: "/invisalign-em-ijui",
     title: "Invisalign em Ijuí | Alinhadores Transparentes | Dr. Gabriel Rockenbach",
     description:
-      "Invisalign em Ijuí/RS com avaliação profissional, planejamento digital e acompanhamento ortodôntico individualizado com o Dr. Gabriel Rockenbach.",
+      "Invisalign em Ijuí/RS com avaliação profissional para alinhadores transparentes. Saiba como funciona o tratamento com o Dr. Gabriel Rockenbach.",
     eyebrow: "Alinhadores Invisalign em Ijuí/RS",
     h1: "Invisalign em Ijuí: alinhadores transparentes para o seu sorriso",
     intro:
@@ -177,7 +177,7 @@ export const localPages: Record<string, LocalPage> = {
     path: "/aparelho-transparente-em-ijui",
     title: "Aparelho Transparente em Ijuí | Ortodontia Discreta | Dr. Gabriel Rockenbach",
     description:
-      "Aparelho transparente em Ijuí/RS: entenda diferenças entre alinhadores transparentes e aparelho estético, cuidados e avaliação profissional.",
+      "Aparelho transparente em Ijuí/RS para quem busca uma opção mais discreta de tratamento ortodôntico. Agende uma avaliação profissional.",
     eyebrow: "Aparelho transparente em Ijuí/RS",
     h1: "Aparelho transparente em Ijuí: opção discreta para tratamento ortodôntico",
     intro:
@@ -239,7 +239,7 @@ export const localPages: Record<string, LocalPage> = {
     path: "/dentista-em-ijui",
     title: "Dentista em Ijuí | Ortodontia e Alinhadores | Dr. Gabriel Rockenbach",
     description:
-      "Dentista em Ijuí/RS com atendimento odontológico, foco em ortodontia moderna, Invisalign, alinhadores transparentes e avaliação personalizada.",
+      "Dentista em Ijuí/RS com atendimento voltado à ortodontia, alinhadores transparentes e avaliação odontológica personalizada.",
     eyebrow: "Dentista em Ijuí/RS",
     h1: "Dentista em Ijuí com atendimento em ortodontia e alinhadores",
     intro:

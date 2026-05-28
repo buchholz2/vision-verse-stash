@@ -1,6 +1,4 @@
-import { CRO, INSTAGRAM_URL, PROFESSIONAL_NAME, PROFESSIONAL_TITLE, WHATSAPP_NUMBER } from "@/lib/contact";
-
-export const SITE_URL = "https://dentista-gabriel.buchholz.net.br";
+export const SITE_URL = "https://dentistagabrielrockenbach.com.br";
 export const SITE_NAME = "Dr. Gabriel Paulo Rockenbach";
 export const DEFAULT_OG_IMAGE = "/og-image.png";
 
@@ -29,8 +27,14 @@ export const dentistSchema: JsonLdSchema = {
   name: "Dr. Gabriel Paulo Rockenbach",
   url: `${SITE_URL}/`,
   image: absoluteAssetUrl(DEFAULT_OG_IMAGE),
-  telephone: `+${WHATSAPP_NUMBER}`,
-  // TODO: Adicionar endereço completo do consultório quando o dado real estiver disponível.
+  description:
+    "Atendimento odontológico em Ijuí/RS com foco em ortodontia, Invisalign, alinhadores transparentes e aparelho transparente.",
+  // TODO: confirmar endereço completo real do consultório.
+  // TODO: confirmar link oficial do Google Maps.
+  // TODO: confirmar telefone/WhatsApp.
+  // TODO: confirmar CRO.
+  // TODO: confirmar horários de atendimento.
+  // TODO: confirmar redes sociais oficiais.
   address: {
     "@type": "PostalAddress",
     addressLocality: "Ijuí",
@@ -42,26 +46,27 @@ export const dentistSchema: JsonLdSchema = {
     { "@type": "AdministrativeArea", name: "Rio Grande do Sul" },
   ],
   medicalSpecialty: "Orthodontics",
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "08:00",
-      closes: "18:00",
-    },
+  knowsAbout: [
+    "Ortodontia",
+    "Invisalign",
+    "Alinhadores transparentes",
+    "Aparelho transparente",
   ],
-  sameAs: [INSTAGRAM_URL],
 };
 
 export const personSchema: JsonLdSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": `${SITE_URL}/#gabriel-rockenbach`,
-  name: `Dr. ${PROFESSIONAL_NAME}`,
-  jobTitle: PROFESSIONAL_TITLE,
-  identifier: CRO,
+  name: "Dr. Gabriel Paulo Rockenbach",
+  jobTitle: "Cirurgião-dentista com atuação em ortodontia",
+  knowsAbout: [
+    "Ortodontia",
+    "Invisalign",
+    "Alinhadores transparentes",
+    "Aparelho transparente",
+  ],
   worksFor: { "@id": `${SITE_URL}/#dentist` },
-  sameAs: [INSTAGRAM_URL],
 };
 
 export const websiteSchema: JsonLdSchema = {

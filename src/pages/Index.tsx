@@ -24,7 +24,7 @@ const Index = () => {
     <main className="min-h-screen bg-background">
       <SEO
         title="Ortodontista em Ijuí | Invisalign e Aparelho Transparente | Dr. Gabriel Rockenbach"
-        description="Atendimento odontológico em Ijuí/RS com foco em ortodontia moderna, Invisalign e alinhadores transparentes. Agende sua avaliação com o Dr. Gabriel Rockenbach."
+        description="Ortodontista em Ijuí/RS com atendimento em Invisalign, alinhadores transparentes e aparelho ortodôntico. Agende sua avaliação com o Dr. Gabriel Rockenbach."
         path="/"
         jsonLd={homeSchemas}
       />

@@ -6,7 +6,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { Footer } from "@/components/sections/Footer";
 import { SEO } from "@/components/SEO";
 import { getLocalPageByPath, LocalPage } from "@/data/localPages";
-import { breadcrumbSchema, dentistSchema, faqSchema, personSchema, websiteSchema } from "@/lib/seo";
+import { breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 type LocalSeoPageProps = {
   page: LocalPage;
@@ -25,9 +25,6 @@ export function LocalSeoPage({ page }: LocalSeoPageProps) {
     .filter((item): item is LocalPage => Boolean(item));
 
   const schemas = [
-    dentistSchema,
-    personSchema,
-    websiteSchema,
     breadcrumbSchema([
       { name: "Início", path: "/" },
       { name: page.h1, path: page.path },

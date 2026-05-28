@@ -9,6 +9,7 @@
     "postbuild": "node scripts/generate-static-routes.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
+    "seo:audit": "node scripts/audit-seo.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
