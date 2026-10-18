@@ -13,8 +13,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['"DM Serif Display"', '"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['Manrope', 'system-ui', '-apple-system', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,6 +52,8 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        navy: { DEFAULT: "hsl(var(--navy))", deep: "hsl(var(--navy-deep))" },
+        ivory: "hsl(var(--ivory))",
         whatsapp: {
           DEFAULT: "hsl(var(--whatsapp))",
           foreground: "hsl(var(--whatsapp-foreground))",

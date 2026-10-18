@@ -36,6 +36,20 @@ const match = (html, regex) => html.match(regex)?.[1]?.trim() ?? "";
 const pageHtmlPath = (routePath) =>
   routePath === "/" ? join(distDir, "index.html") : join(distDir, routePath.slice(1), "index.html");
 
+const decodeEntities = (text) =>
+  text
+    .replaceAll("&amp;", "&")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#x27;", "'")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">");
+
+const textContent = (fragment) =>
+  decodeEntities(fragment.replace(/<!--[\s\S]*?-->/g, "").replace(/<[^>]+>/g, " "))
+    .replace(/\s+/g, " ")
+    .replace(/\s+([.,;:!?])/g, "$1")
+    .trim();
+
 const extractSchemas = (html) => {
   const matches = [...html.matchAll(/<script[^>]+type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
   const schemas = [];
@@ -103,6 +117,65 @@ const auditSitemap = async () => {
   }
 };
 
+const auditExtras = async () => {
+  const titles = new Set();
+  const descriptions = new Set();
+  const known = new Set(routes.map((route) => route.path));
+
+  for (const route of routes) {
+    const html = await readText(pageHtmlPath(route.path));
+    const schemas = extractSchemas(html);
+    const types = schemaTypes(schemas);
+
+    // Título e descrição: únicos e dentro do tamanho que os buscadores exibem.
+    if (route.title.length > 65) fail(`${route.path}: título com ${route.title.length} caracteres (máximo 65).`);
+    if (route.description.length > 160) fail(`${route.path}: descrição com ${route.description.length} caracteres (máximo 160).`);
+    if (titles.has(route.title)) fail(`${route.path}: título repetido em outra página.`);
+    if (descriptions.has(route.description)) fail(`${route.path}: descrição repetida em outra página.`);
+    titles.add(route.title);
+    descriptions.add(route.description);
+
+    // Open Graph e idioma.
+    if (!/<meta property="og:image:width" content="1200"/.test(html)) fail(`${route.path}: og:image:width ausente.`);
+    if (!/<meta property="og:image:alt"/.test(html)) fail(`${route.path}: og:image:alt ausente.`);
+    if (!/<link rel="alternate" hreflang="pt-BR"/.test(html)) fail(`${route.path}: hreflang pt-BR ausente.`);
+    if (!/<html lang="pt-BR"/.test(html)) fail(`${route.path}: lang pt-BR ausente.`);
+    if (!types.has("WebPage")) fail(`${route.path}: WebPage ausente.`);
+    if (route.service && !types.has("Service")) fail(`${route.path}: Service ausente.`);
+
+    // JSON-LD de FAQ igual ao texto visível: cada pergunta e resposta aparece na página pré-renderizada.
+    const visible = textContent(html.match(/<div id="root"[^>]*>([\s\S]*)<\/div>\s*<\/body>/)?.[1] ?? "");
+    for (const item of route.faq) {
+      if (!visible.includes(item.question)) fail(`${route.path}: pergunta do FAQ ausente do texto visível ("${item.question}").`);
+    }
+    const faqSchemas = schemas.filter((schema) => schema["@type"] === "FAQPage");
+    if (faqSchemas.length > 1) fail(`${route.path}: mais de um FAQPage no HTML.`);
+
+    // Imagens com texto alternativo e dimensões (evita CLS); links internos apontam para páginas existentes.
+    for (const img of html.matchAll(/<img\b[^>]*>/g)) {
+      if (!/\balt=/.test(img[0])) fail(`${route.path}: imagem sem alt (${img[0].slice(0, 80)}).`);
+      if (!/\bwidth=/.test(img[0]) || !/\bheight=/.test(img[0])) fail(`${route.path}: imagem sem width/height (${img[0].slice(0, 80)}).`);
+    }
+    for (const link of html.matchAll(/<a\b[^>]*\bhref="(\/[^"#?]*)(?:[#?][^"]*)?"/g)) {
+      const path = link[1].replace(/\/$/, "") || "/";
+      if (!known.has(path)) fail(`${route.path}: link interno para página inexistente (${link[1]}).`);
+    }
+  }
+
+  const home = await readText(pageHtmlPath("/"));
+  const internalTargets = new Set([...home.matchAll(/<a\b[^>]*\bhref="(\/[a-z-]+)"/g)].map((item) => item[1]));
+  for (const route of routes) {
+    if (route.path !== "/" && route.service && !internalTargets.has(route.path)) fail(`Home não linka para ${route.path}.`);
+  }
+
+  const notFound = await readText(join(distDir, "404.html")).catch(() => "");
+  if (!notFound) fail("404.html ausente no build.");
+  else if (!/<meta\s+name="robots"\s+content="noindex/.test(notFound)) fail("404.html sem noindex.");
+
+  const sitemap = await readText(join(distDir, "sitemap.xml"));
+  if (!/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/.test(sitemap)) fail("Sitemap sem lastmod.");
+};
+
 const auditRobots = async () => {
   const robots = await readText(join(distDir, "robots.txt"));
 
@@ -129,8 +202,16 @@ const auditPages = async () => {
     if (description !== route.description) fail(`${route.path}: meta description inesperada.`);
     if (canonicalHref !== canonical) fail(`${route.path}: canonical inesperado.`);
     if (ogUrl !== canonical) fail(`${route.path}: og:url inesperado.`);
-    if (robots !== "index, follow") fail(`${route.path}: robots não está index, follow.`);
+    if (!robots.startsWith("index, follow")) fail(`${route.path}: robots não está index, follow.`);
     if (!route.h1) fail(`${route.path}: H1 esperado não configurado no mapa de SEO.`);
+
+    // O HTML estático precisa trazer o conteúdo pré-renderizado: um único H1 igual ao do mapa de SEO e texto real.
+    const h1s = [...html.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/g)].map((item) => textContent(item[1]));
+    if (h1s.length !== 1) fail(`${route.path}: esperado 1 H1 no HTML estático, encontrado ${h1s.length}.`);
+    else if (h1s[0] !== route.h1) fail(`${route.path}: H1 do HTML estático difere do mapa de SEO ("${h1s[0]}").`);
+    if (!html.includes(`data-prerendered-path="${route.path}"`)) fail(`${route.path}: conteúdo pré-renderizado ausente em #root.`);
+    const visibleText = textContent(html.match(/<div id="root"[^>]*>([\s\S]*)<\/div>\s*<\/body>/)?.[1] ?? "");
+    if (visibleText.length < 1500) fail(`${route.path}: texto pré-renderizado curto demais (${visibleText.length} caracteres).`);
     if (!types.has("Dentist")) fail(`${route.path}: Dentist ausente.`);
     if (!types.has("LocalBusiness")) fail(`${route.path}: LocalBusiness ausente.`);
     if (!types.has("Person")) fail(`${route.path}: Person ausente.`);
@@ -144,6 +225,7 @@ await scanForOldDomain();
 await auditSitemap();
 await auditRobots();
 await auditPages();
+await auditExtras();
 
 if (failures.length) {
   console.error("SEO audit failed:");

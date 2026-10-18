@@ -12,6 +12,10 @@ Não usar os dois domínios como versões independentes do site.
 
 ## Dados para preencher
 
+Endereço de atendimento confirmado em 16/10/2026:
+
+Rua Benjamin Constant, 109, Ijuí/RS.
+
 Nome do negócio/profissional:
 
 Dr. Gabriel Paulo Rockenbach
@@ -68,7 +72,6 @@ https://dentistagabrielrockenbach.com.br/dentista-em-ijui
 
 ## Pendências para preencher manualmente
 
-- Endereço completo
 - Telefone/WhatsApp
 - Horário de atendimento
 - Link do Google Maps

@@ -1,13 +1,14 @@
-import { Instagram, MessageCircle, MapPin, Clock } from "lucide-react";
+import { Instagram, MessageCircle } from "lucide-react";
 import logoFull from "@/assets/brand/logo-full-web.png";
-import { whatsappLink, INSTAGRAM_URL, PHONE_DISPLAY } from "@/lib/contact";
+import { whatsappLink, ADDRESS_DISPLAY, GOOGLE_MAPS_URL, INSTAGRAM_URL, PHONE_DISPLAY } from "@/lib/contact";
 
 const links = [
-  { href: "/#inicio", label: "Início" },
-  { href: "/#sobre", label: "Sobre" },
-  { href: "/#ortodontia", label: "Ortodontia" },
+  { href: "/#alinhadores", label: "Alinhadores" },
+  { href: "/#sobre", label: "Dr. Gabriel" },
   { href: "/#tratamentos", label: "Tratamentos" },
-  { href: "/#seo-local", label: "Ijuí/RS" },
+  { href: "/#atendimento", label: "Atendimento" },
+  { href: "/#etapas", label: "Etapas" },
+  { href: "/#perguntas-frequentes", label: "Dúvidas" },
   { href: "/#contato", label: "Contato" },
 ];
 
@@ -18,155 +19,78 @@ const localLinks = [
   { href: "/dentista-em-ijui", label: "Dentista em Ijuí" },
 ];
 
+const linkClass = "text-sm text-white/70 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60";
+
 export function Footer() {
   return (
-    <footer className="bg-foreground text-primary-foreground/70">
-      <div className="container-wide grid grid-cols-1 gap-12 py-16 md:grid-cols-12">
-
-        {/* Brand column */}
-        <div className="md:col-span-5">
+    <footer className="bg-navy-deep text-white/70">
+      <div className="container-wide layout-grid py-12 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="sm:col-span-2 lg:col-span-5">
           <img
             src={logoFull}
             alt="Gabriel Paulo Rockenbach - cirurgião-dentista e ortodontista"
             width={900}
             height={249}
-            className="h-16 w-auto max-w-full object-contain brightness-0 invert opacity-90 md:h-20"
+            className="h-14 w-auto max-w-full object-contain brightness-0 invert opacity-90 md:h-14"
             loading="lazy"
           />
-          <p className="mt-5 text-sm leading-relaxed text-primary-foreground/55 max-w-sm">
-            Cirurgião-dentista e especialista em Ortodontia. Cuidado humanizado,
-            alinhadores Invisalign® e planejamento digital para o seu sorriso.
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/65">
+            Cirurgião-dentista e especialista em Ortodontia, em Ijuí/RS. Alinhadores Invisalign® e planejamento digital.
           </p>
-
-          {/* Credential chips */}
-          <div className="mt-6 flex flex-wrap gap-2">
-            {["CRO 29705", "Invisalign® Doctor", "Ijuí/RS"].map((label) => (
-              <span
-                key={label}
-                className="rounded-full border border-white/12 bg-white/6 px-3 py-1 text-xs text-primary-foreground/60"
-              >
-                {label}
-              </span>
-            ))}
-          </div>
-
-          {/* Social */}
-          <div className="mt-7 flex gap-3">
-            <a
-              href={whatsappLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/6 text-primary-foreground/60 transition-all duration-300 hover:bg-white/14 hover:text-white"
-              aria-label="WhatsApp"
-            >
-              <MessageCircle className="h-4 w-4" />
+          <address className="mt-4 text-sm not-italic leading-relaxed">
+            <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
+              {ADDRESS_DISPLAY}
             </a>
-            <a
-              href={INSTAGRAM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-white/6 text-primary-foreground/60 transition-all duration-300 hover:bg-white/14 hover:text-white"
-              aria-label="Instagram"
-            >
-              <Instagram className="h-4 w-4" />
+          </address>
+          <div className="mt-6 flex gap-3">
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:bg-white/10 hover:text-white" aria-label={`WhatsApp ${PHONE_DISPLAY}`}>
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/80 transition-colors hover:bg-white/10 hover:text-white" aria-label="Instagram">
+              <Instagram className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>
         </div>
 
-        {/* Navigation column */}
-        <div className="md:col-span-3">
-          <h4 className="text-sm font-semibold uppercase tracking-[0.15em] text-primary-foreground/80">Navegação</h4>
+        <nav className="lg:col-span-3" aria-label="Rodapé: seções">
+          <h2 className="flex min-h-14 items-center font-serif text-lg leading-snug text-white">Navegação</h2>
           <ul className="mt-5 space-y-2.5">
             {links.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-sm text-primary-foreground/50 transition-colors duration-200 hover:text-primary-foreground/90"
-                >
-                  {l.label}
-                </a>
+                <a href={l.href} className={linkClass}>{l.label}</a>
               </li>
             ))}
           </ul>
-          <h4 className="mt-8 text-sm font-semibold uppercase tracking-[0.15em] text-primary-foreground/80">Páginas locais</h4>
+        </nav>
+
+        <nav className="lg:col-span-4" aria-label="Rodapé: páginas locais">
+          <h2 className="flex min-h-14 items-center font-serif text-lg leading-snug text-white">Atendimento em Ijuí</h2>
           <ul className="mt-5 space-y-2.5">
             {localLinks.map((l) => (
               <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="text-sm text-primary-foreground/50 transition-colors duration-200 hover:text-primary-foreground/90"
-                >
-                  {l.label}
-                </a>
+                <a href={l.href} className={linkClass}>{l.label}</a>
               </li>
             ))}
           </ul>
-        </div>
-
-        {/* Contact column */}
-        <div className="md:col-span-4">
-          <h4 className="text-sm font-semibold uppercase tracking-[0.15em] text-primary-foreground/80">Contato</h4>
-          <ul className="mt-5 space-y-4">
-            <li>
-              <a
-                href={whatsappLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 text-sm text-primary-foreground/55 transition-colors hover:text-primary-foreground/90"
-                aria-label="Falar pelo WhatsApp"
-              >
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/6 transition-colors group-hover:bg-white/12">
-                  <MessageCircle className="h-4 w-4 text-accent" />
-                </span>
-                {PHONE_DISPLAY}
-              </a>
-            </li>
-            <li>
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 text-sm text-primary-foreground/55 transition-colors hover:text-primary-foreground/90"
-                aria-label="Abrir Instagram"
-              >
-                <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/10 bg-white/6 transition-colors group-hover:bg-white/12">
-                  <Instagram className="h-4 w-4 text-accent" />
-                </span>
-                @gabirockenbachp
-              </a>
-            </li>
-            <li className="flex items-start gap-3 text-sm text-primary-foreground/50">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/6">
-                <MapPin className="h-4 w-4 text-accent" />
-              </span>
-              <span>
-                Ijuí, Rio Grande do Sul — RS<br />
-                TODO: Adicionar endereço completo do consultório aqui.
-              </span>
-            </li>
-            <li className="flex items-start gap-3 text-sm text-primary-foreground/50">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/6">
-                <Clock className="h-4 w-4 text-accent" />
-              </span>
-              <span>
-                Seg–Sex: 8h às 18h<br />
-                Sob agendamento
-              </span>
-            </li>
-          </ul>
-        </div>
+        </nav>
       </div>
 
-      {/* Gold divider */}
-      <div className="gold-divider opacity-30" aria-hidden="true" />
-
-      {/* Bottom bar */}
-      <div className="container-wide py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-primary-foreground/35">
-        <p>© {new Date().getFullYear()} Dr. Gabriel Paulo Rockenbach. Todos os direitos reservados.</p>
-        <p className="max-w-xl text-center md:text-right">
-          As informações deste site têm caráter informativo e não substituem
-          avaliação profissional individualizada.
-        </p>
+      <div className="border-t border-white/10">
+        <div className="container-wide flex flex-col items-start justify-between gap-3 py-6 text-xs text-white/60 lg:grid lg:grid-cols-12 lg:gap-12">
+          <div className="space-y-2 lg:col-span-5">
+            <p>© {new Date().getFullYear()} Dr. Gabriel Paulo Rockenbach. Todos os direitos reservados.</p>
+            <p>
+              <a href="/politica-de-privacidade" className="underline underline-offset-2 hover:text-white">
+                Política de Privacidade
+              </a>
+            </p>
+          </div>
+          <div className="space-y-2 lg:col-span-7">
+            <p>As informações deste site têm caráter informativo e não substituem avaliação profissional individualizada.</p>
+            <p>Invisalign® é marca registrada da Align Technology, Inc. As demais marcas citadas pertencem aos seus titulares.</p>
+            <p>Animação ilustrativa dos alinhadores, feita sobre um modelo 3D adaptado. O alinhador foi criado para este site.</p>
+          </div>
+        </div>
       </div>
     </footer>
   );

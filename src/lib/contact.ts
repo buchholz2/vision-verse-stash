@@ -10,3 +10,6 @@ export const PROFESSIONAL_NAME = "Gabriel Paulo Rockenbach";
 export const PROFESSIONAL_TITLE = "Cirurgião-dentista | Especialista em Ortodontia";
 export const CRO = "CRO 29705";
 export const PHONE_DISPLAY = "(55) 9 9669-3480";
+export const STREET_ADDRESS = "Rua Benjamin Constant, 109";
+export const ADDRESS_DISPLAY = `${STREET_ADDRESS}, Ijuí/RS`;
+export const GOOGLE_MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS_DISPLAY)}`;

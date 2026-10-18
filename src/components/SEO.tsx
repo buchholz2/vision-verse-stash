@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { absoluteAssetUrl, absoluteUrl, DEFAULT_OG_IMAGE, SITE_NAME } from "@/lib/seo";
+import { absoluteAssetUrl, absoluteUrl, DEFAULT_OG_IMAGE, DEFAULT_ROBOTS, OG_IMAGE_ALT, SITE_NAME } from "@/lib/seo";
 import type { JsonLdSchema } from "@/lib/seo";
 
 type SEOProps = {
@@ -35,6 +35,19 @@ const setCanonical = (href: string) => {
   element.setAttribute("href", href);
 };
 
+const setAlternate = (hreflang: string, href: string) => {
+  let element = document.head.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${hreflang}"]`);
+
+  if (!element) {
+    element = document.createElement("link");
+    element.setAttribute("rel", "alternate");
+    element.setAttribute("hreflang", hreflang);
+    document.head.appendChild(element);
+  }
+
+  element.setAttribute("href", href);
+};
+
 const removeManagedJsonLd = () => {
   document.head.querySelectorAll('script[type="application/ld+json"][data-managed-seo="true"]').forEach((node) => {
     node.remove();
@@ -46,7 +59,7 @@ export function SEO({
   description,
   path = "/",
   image = DEFAULT_OG_IMAGE,
-  robots = "index, follow",
+  robots = DEFAULT_ROBOTS,
   jsonLd = [],
 }: SEOProps) {
   useEffect(() => {
@@ -68,12 +81,25 @@ export function SEO({
     setMeta("property", "og:url", canonical);
     setMeta("property", "og:site_name", SITE_NAME);
     setMeta("property", "og:image", ogImage);
+    setMeta("property", "og:image:alt", OG_IMAGE_ALT);
+    setAlternate("pt-BR", canonical);
+    setAlternate("x-default", canonical);
 
     setMeta("name", "twitter:card", "summary_large_image");
     setMeta("name", "twitter:title", title);
     setMeta("name", "twitter:description", description);
     setMeta("name", "twitter:image", ogImage);
+    setMeta("name", "twitter:image:alt", OG_IMAGE_ALT);
 
+    // O HTML gerado no build já traz o JSON-LD; ao montar o app, os tipos que o React também gera (FAQ e breadcrumb) não duplicam.
+    const managedTypes = new Set(jsonLd.map((schema) => schema["@type"]));
+    document.head.querySelectorAll('script[data-static-seo="true"]').forEach((node) => {
+      try {
+        if (managedTypes.has(JSON.parse(node.textContent ?? "{}")["@type"])) node.remove();
+      } catch {
+        /* JSON-LD inválido não é removido */
+      }
+    });
     removeManagedJsonLd();
     jsonLd.forEach((schema) => {
       const script = document.createElement("script");

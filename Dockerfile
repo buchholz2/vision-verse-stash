@@ -9,8 +9,8 @@ RUN npm run build
 # Estágio de Produção (Nginx)
 FROM nginx:stable-alpine
 COPY --from=build /app/dist /usr/share/nginx/html
-# Se você usa React Router, esta linha é importante para o Nginx:
-# $uri/index.html permite servir metadados estáticos das rotas de SEO sem exigir barra final.
-RUN sed -i 's/index  index.html index.htm;/index  index.html index.htm; try_files $uri $uri\/index.html $uri\/ \/index.html;/' /etc/nginx/conf.d/default.conf
+# Configuração própria: gzip, cache imutável para /assets (hash no nome), cache curto para HTML
+# e fallback do React Router (ver comentários em nginx.conf).
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

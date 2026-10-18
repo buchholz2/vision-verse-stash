@@ -1,157 +1,130 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logoFull from "@/assets/brand/logo-full-web.png";
-import { WhatsAppButton } from "./WhatsAppButton";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/#inicio", sectionId: "inicio", label: "Início" },
-  { href: "/#sobre", sectionId: "sobre", label: "Sobre" },
-  { href: "/#ortodontia", sectionId: "ortodontia", label: "Ortodontia" },
+  { href: "/#alinhadores", sectionId: "alinhadores", label: "Alinhadores" },
+  { href: "/#sobre", sectionId: "sobre", label: "Dr. Gabriel" },
   { href: "/#tratamentos", sectionId: "tratamentos", label: "Tratamentos" },
-  { href: "/#seo-local", sectionId: "seo-local", label: "Ijuí/RS" },
+  { href: "/#atendimento", sectionId: "atendimento", label: "Atendimento" },
   { href: "/#contato", sectionId: "contato", label: "Contato" },
 ];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState("inicio");
-  const progressRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState("");
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setScrolled(scrollTop > 24);
-      setProgress(pct);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Intersection Observer for active section
   useEffect(() => {
-    const sectionIds = NAV.map((item) => item.sectionId);
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px" }
+      (entries) => entries.forEach((entry) => entry.isIntersecting && setActiveSection(entry.target.id)),
+      { rootMargin: "-40% 0px -55% 0px" },
     );
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
+    NAV.forEach((item) => {
+      const el = document.getElementById(item.sectionId);
       if (el) observer.observe(el);
     });
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <>
-      {/* Scroll Progress Bar */}
-      <div
-        ref={progressRef}
-        className="scroll-progress"
-        style={{ width: `${progress}%` }}
-        aria-hidden="true"
-      />
+  // Menu móvel: foco no primeiro link ao abrir, Esc fecha e devolve o foco ao botão.
+  useEffect(() => {
+    if (!open) return;
+    menuRef.current?.querySelector<HTMLElement>("a")?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        buttonRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
-      <header
+  return (
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        scrolled || open ? "border-b border-border/70 bg-background/95 backdrop-blur-md" : "bg-background/95",
+      )}
+    >
+      <a href="#conteudo" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-5 focus:py-3 focus:text-primary">Pular para o conteúdo</a>
+      <div className="container-wide flex h-[4.25rem] items-center justify-between gap-6 lg:h-[4.75rem]">
+        <a href="/" className="flex min-w-0 items-center" aria-label="Dr. Gabriel Rockenbach, página inicial">
+          <img
+            src={logoFull}
+            alt="Gabriel Paulo Rockenbach - cirurgião-dentista e ortodontista"
+            width={900}
+            height={249}
+            className="h-10 w-auto max-w-[220px] object-contain sm:h-11 sm:max-w-[290px] lg:h-11"
+            loading="eager"
+          />
+        </a>
+
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Navegação principal">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              aria-current={activeSection === item.sectionId ? "location" : undefined}
+              className={cn(
+                "text-sm font-medium transition-colors",
+                activeSection === item.sectionId ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <button
+          ref={buttonRef}
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground hover:bg-muted lg:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={open}
+          aria-controls="menu-movel"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      <div
+        id="menu-movel"
+        ref={menuRef}
+        {...(open ? {} : ({ inert: "" } as object))}
+        style={{
+          // Visível de imediato ao abrir (o foco precisa de um elemento visível); some só depois de recolher.
+          transition: `max-height 300ms ease, visibility 0s linear ${open ? "0s" : "300ms"}`,
+        }}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-smooth",
-          scrolled
-            ? "glass border-b border-border/40 py-3 shadow-soft"
-            : "bg-background/60 py-4 backdrop-blur-sm"
+          "overflow-hidden bg-background/95 lg:hidden",
+          open ? "visible max-h-[32rem]" : "invisible max-h-0",
         )}
       >
-        <div className="container-wide flex items-center justify-between gap-6">
-          <a href="/" className="group flex min-w-0 items-center" aria-label="Página inicial">
-            <img
-              src={logoFull}
-              alt="Gabriel Paulo Rockenbach - cirurgião-dentista e ortodontista"
-              width={900}
-              height={249}
-              className="h-11 w-auto max-w-[235px] object-contain transition-all duration-500 group-hover:opacity-80 group-hover:scale-[0.98] sm:h-12 sm:max-w-[330px] lg:h-[3.25rem] lg:max-w-[380px]"
-              loading="eager"
-            />
-          </a>
-
-          <nav className="hidden lg:flex items-center gap-7" aria-label="Navegação principal">
-            {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "relative text-sm transition-colors duration-300 pb-0.5",
-                  activeSection === item.sectionId
-                    ? "text-primary font-medium"
-                    : "text-foreground/65 hover:text-primary"
-                )}
-              >
-                {item.label}
-                {activeSection === item.sectionId && (
-                  <span className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full bg-gradient-gold animate-fade-in" aria-hidden="true" />
-                )}
-              </a>
-            ))}
-          </nav>
-
-          <div className="hidden lg:block">
-            <WhatsAppButton size="default" className="border border-accent/30 shadow-card hover:shadow-gold">
-              Agendar avaliação
-            </WhatsAppButton>
-          </div>
-
-          <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-all hover:bg-primary/8 hover:text-primary lg:hidden"
-            onClick={() => setOpen((s) => !s)}
-            aria-label={open ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={open}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-
-        <div
-          className={cn(
-            "glass overflow-hidden border-b border-border/40 transition-[max-height,opacity] duration-500 ease-smooth lg:hidden",
-            open ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
-          )}
-        >
-          <nav className="container-narrow flex flex-col gap-1 py-6" aria-label="Navegação mobile">
-            {NAV.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className={cn(
-                  "flex items-center gap-3 border-b border-border/30 py-4 text-base last:border-0 transition-colors duration-200",
-                  activeSection === item.sectionId
-                    ? "text-primary font-medium"
-                    : "text-foreground/80 hover:text-primary"
-                )}
-              >
-                {activeSection === item.sectionId && (
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent shrink-0" aria-hidden="true" />
-                )}
-                {item.label}
-              </a>
-            ))}
-            <div className="pt-4">
-              <WhatsAppButton size="lg" className="w-full">
-                Agendar avaliação
-              </WhatsAppButton>
-            </div>
-          </nav>
-        </div>
-      </header>
-    </>
+        <nav className="container-wide flex flex-col py-4" aria-label="Navegação mobile">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="border-b border-border/60 py-4 text-base font-medium text-foreground last:border-0"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
   );
 }

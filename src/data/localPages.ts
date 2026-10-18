@@ -1,4 +1,7 @@
 import type { FaqItem } from "@/lib/seo";
+import faqsData from "./faqs.json";
+
+const faqs = faqsData as Record<string, FaqItem[]>;
 
 export type LocalPageSection = {
   title: string;
@@ -18,38 +21,13 @@ export type LocalPage = {
   whatsappMessage: string;
 };
 
-export const homeFaqs: FaqItem[] = [
-  {
-    question: "Quanto tempo dura um tratamento ortodôntico?",
-    answer:
-      "A duração varia conforme o diagnóstico, a complexidade do caso e a resposta biológica de cada paciente. A estimativa mais adequada é feita após avaliação profissional.",
-  },
-  {
-    question: "Invisalign substitui o aparelho fixo?",
-    answer:
-      "Em alguns casos, Invisalign pode ser indicado como alternativa ao aparelho fixo. A escolha depende da avaliação clínica e dos objetivos do tratamento.",
-  },
-  {
-    question: "Aparelho transparente dói?",
-    answer:
-      "Pode haver pressão ou desconforto leve nos primeiros dias de uso ou após ajustes. Se houver dor persistente, o caso deve ser reavaliado pelo dentista.",
-  },
-  {
-    question: "Como saber se posso usar alinhadores transparentes?",
-    answer:
-      "É necessário avaliar mordida, posição dos dentes, saúde gengival e exames complementares. Cada caso deve ser analisado individualmente.",
-  },
-  {
-    question: "Como agendar uma avaliação em Ijuí?",
-    answer:
-      "O agendamento pode ser feito pelo WhatsApp do consultório. Na avaliação, o Dr. Gabriel analisa o caso e explica as possibilidades de tratamento.",
-  },
-];
+// As perguntas e respostas ficam em faqs.json: a mesma fonte alimenta a página e o JSON-LD (FAQPage) gerado no build.
+export const homeFaqs: FaqItem[] = faqs["/"];
 
 export const localPages: Record<string, LocalPage> = {
   "ortodontista-em-ijui": {
     path: "/ortodontista-em-ijui",
-    title: "Ortodontista em Ijuí | Tratamento Ortodôntico | Dr. Gabriel Rockenbach",
+    title: "Ortodontista em Ijuí | Aparelho e Alinhadores | Dr. Gabriel",
     description:
       "Procura ortodontista em Ijuí/RS? Conheça o atendimento do Dr. Gabriel Rockenbach com foco em ortodontia, aparelho e alinhadores transparentes.",
     eyebrow: "Ortodontia em Ijuí/RS",
@@ -92,26 +70,13 @@ export const localPages: Record<string, LocalPage> = {
         ],
       },
     ],
-    faq: [
-      homeFaqs[0],
-      {
-        question: "Ortodontista atende apenas casos estéticos?",
-        answer:
-          "Não. A ortodontia também avalia função, mordida, estabilidade e saúde bucal. A estética pode fazer parte do objetivo, mas o diagnóstico deve considerar o conjunto.",
-      },
-      {
-        question: "Preciso fazer exames antes de colocar aparelho?",
-        answer:
-          "Em muitos casos, exames são necessários para planejar com segurança. A solicitação depende da avaliação clínica inicial.",
-      },
-      homeFaqs[4],
-    ],
+    faq: faqs["/ortodontista-em-ijui"],
     relatedPaths: ["/invisalign-em-ijui", "/aparelho-transparente-em-ijui", "/dentista-em-ijui"],
     whatsappMessage: "Olá, Dr. Gabriel! Gostaria de agendar uma avaliação ortodôntica em Ijuí.",
   },
   "invisalign-em-ijui": {
     path: "/invisalign-em-ijui",
-    title: "Invisalign em Ijuí | Alinhadores Transparentes | Dr. Gabriel Rockenbach",
+    title: "Invisalign em Ijuí | Alinhadores Transparentes | Dr. Gabriel",
     description:
       "Invisalign em Ijuí/RS com avaliação profissional para alinhadores transparentes. Saiba como funciona o tratamento com o Dr. Gabriel Rockenbach.",
     eyebrow: "Alinhadores Invisalign em Ijuí/RS",
@@ -160,22 +125,13 @@ export const localPages: Record<string, LocalPage> = {
         ],
       },
     ],
-    faq: [
-      homeFaqs[1],
-      homeFaqs[3],
-      {
-        question: "Preciso usar Invisalign o dia todo?",
-        answer:
-          "O tempo diário de uso é orientado pelo profissional e costuma ser decisivo para o tratamento. A rotina deve ser explicada durante a avaliação.",
-      },
-      homeFaqs[4],
-    ],
+    faq: faqs["/invisalign-em-ijui"],
     relatedPaths: ["/ortodontista-em-ijui", "/aparelho-transparente-em-ijui", "/dentista-em-ijui"],
     whatsappMessage: "Olá, Dr. Gabriel! Gostaria de saber se Invisalign pode ser indicado para o meu caso em Ijuí.",
   },
   "aparelho-transparente-em-ijui": {
     path: "/aparelho-transparente-em-ijui",
-    title: "Aparelho Transparente em Ijuí | Ortodontia Discreta | Dr. Gabriel Rockenbach",
+    title: "Aparelho Transparente em Ijuí | Ortodontia | Dr. Gabriel",
     description:
       "Aparelho transparente em Ijuí/RS para quem busca uma opção mais discreta de tratamento ortodôntico. Agende uma avaliação profissional.",
     eyebrow: "Aparelho transparente em Ijuí/RS",
@@ -218,26 +174,13 @@ export const localPages: Record<string, LocalPage> = {
         ],
       },
     ],
-    faq: [
-      homeFaqs[2],
-      {
-        question: "Aparelho transparente mancha?",
-        answer:
-          "Alguns materiais podem sofrer alteração de cor conforme hábitos alimentares e higiene. O profissional orienta cuidados para reduzir esse risco.",
-      },
-      {
-        question: "Alinhador transparente é igual a aparelho estético?",
-        answer:
-          "Não. Alinhadores são removíveis; aparelho estético é fixo. A indicação depende do caso e deve ser definida em consulta.",
-      },
-      homeFaqs[4],
-    ],
+    faq: faqs["/aparelho-transparente-em-ijui"],
     relatedPaths: ["/invisalign-em-ijui", "/ortodontista-em-ijui", "/dentista-em-ijui"],
     whatsappMessage: "Olá, Dr. Gabriel! Gostaria de avaliar opções de aparelho transparente em Ijuí.",
   },
   "dentista-em-ijui": {
     path: "/dentista-em-ijui",
-    title: "Dentista em Ijuí | Ortodontia e Alinhadores | Dr. Gabriel Rockenbach",
+    title: "Dentista em Ijuí | Ortodontia e Alinhadores | Dr. Gabriel",
     description:
       "Dentista em Ijuí/RS com atendimento voltado à ortodontia, alinhadores transparentes e avaliação odontológica personalizada.",
     eyebrow: "Dentista em Ijuí/RS",
@@ -269,21 +212,11 @@ export const localPages: Record<string, LocalPage> = {
       {
         title: "Localização e agendamento",
         paragraphs: [
-          "O atendimento é realizado em Ijuí/RS, com agendamento pelo WhatsApp. O endereço completo deve ser adicionado no site quando confirmado para publicação.",
-          "TODO: Adicionar endereço completo do consultório aqui.",
+          "O atendimento é realizado em Ijuí/RS, com agendamento pelo WhatsApp.",
         ],
       },
     ],
-    faq: [
-      {
-        question: "O Dr. Gabriel atende ortodontia em Ijuí?",
-        answer:
-          "Sim. O site informa atuação em Ijuí/RS com foco em ortodontia, Invisalign e alinhadores transparentes.",
-      },
-      homeFaqs[0],
-      homeFaqs[3],
-      homeFaqs[4],
-    ],
+    faq: faqs["/dentista-em-ijui"],
     relatedPaths: ["/ortodontista-em-ijui", "/invisalign-em-ijui", "/aparelho-transparente-em-ijui"],
     whatsappMessage: "Olá, Dr. Gabriel! Gostaria de agendar uma avaliação odontológica em Ijuí.",
   },

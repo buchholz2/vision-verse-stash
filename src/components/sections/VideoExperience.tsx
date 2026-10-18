@@ -1,97 +1,99 @@
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 
+// Vídeos próprios do consultório (instrumentais e preparo clínico). Auditoria de mídia: nenhum é cópia ou
+// derivado dos vídeos de referência rejeitados (resolução, duração e conteúdo distintos). Cada item traz uma
+// versão leve (720p, sem áudio) e, como alternativa, o arquivo original.
 const videos = [
   {
     src: "/videos/reels-atendimento-01.mp4",
-    poster: "/images/poster-01.jpg",
-    label: "Procedimento clínico",
+    light: "/videos/reels-atendimento-01-web.mp4",
+    poster: "/images/poster-atendimento-01.jpg",
+    label: "Atendimento e procedimento clínico",
   },
   {
     src: "/videos/reels-atendimento-02.mp4",
-    poster: "/images/poster-02.jpg",
-    label: "Materiais e preparo",
+    light: "/videos/reels-atendimento-02-web.mp4",
+    poster: "/images/poster-atendimento-02.jpg",
+    label: "Atendimento ortodôntico",
   },
 ];
 
+/**
+ * Reprodução automática, muda, em loop e inline. Para poupar CPU e bateria, pausa fora da tela e retoma ao voltar,
+ * exceto se o visitante pausou manualmente (os controles nativos permitem pausar e retomar).
+ */
+function ClinicVideo({ src, light, poster, label }: (typeof videos)[number]) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const userPaused = useRef(false);
+  const autoPausing = useRef(false);
+
+  useEffect(() => {
+    const video = ref.current;
+    if (!video) return;
+    const onPause = () => {
+      if (!autoPausing.current) userPaused.current = true;
+      autoPausing.current = false;
+    };
+    const onPlay = () => {
+      userPaused.current = false;
+    };
+    video.addEventListener("pause", onPause);
+    video.addEventListener("play", onPlay);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (!userPaused.current) void video.play().catch(() => undefined);
+        } else if (!video.paused) {
+          autoPausing.current = true;
+          video.pause();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+      video.removeEventListener("pause", onPause);
+      video.removeEventListener("play", onPlay);
+    };
+  }, []);
+
+  return (
+    <figure>
+      <div className="overflow-hidden rounded-[1.5rem] bg-primary">
+        <video
+          ref={ref}
+          className="block aspect-[9/16] w-full object-cover [filter:saturate(0.92)]"
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls
+          preload="metadata"
+          poster={poster}
+          aria-label={label}
+        >
+          <source src={light} type="video/mp4" />
+          <source src={src} type="video/mp4" />
+        </video>
+      </div>
+      <figcaption className="mt-3 text-sm leading-snug text-muted-foreground">{label}</figcaption>
+    </figure>
+  );
+}
+
 export function VideoExperience() {
   return (
-    <section id="atendimento" className="relative overflow-hidden bg-background py-24 md:py-32">
-      <div className="container-wide grid grid-cols-1 items-center gap-14 lg:grid-cols-12">
+    <section id="atendimento" className="section-y scroll-mt-20 bg-secondary">
+      <div className="container-wide layout-grid lg:items-start">
         <div className="lg:col-span-5">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-            className="text-xs uppercase tracking-[0.28em] text-accent"
-          >
-            Amostragem de procedimentos
-          </motion.p>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.72, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-5 max-w-xl font-serif text-5xl leading-[1.04] text-foreground md:text-6xl text-balance"
-          >
-            Procedimentos clínicos, vistos{" "}
-            <span className="italic text-primary">de perto.</span>
-          </motion.h2>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.72, delay: 0.16 }}
-            className="mt-8 max-w-xl space-y-5 text-lg leading-relaxed text-muted-foreground text-pretty"
-          >
-            <p>
-              Os vídeos mostram trechos de procedimentos odontológicos e etapas de
-              preparo clínico, com foco na rotina real de atendimento.
-            </p>
-            <p className="border-l border-accent/60 pl-5 font-serif text-2xl leading-snug text-foreground">
-              Uma amostragem visual para entender como o cuidado acontece na prática.
-            </p>
-          </motion.div>
+          <h2 className="section-title">A rotina do consultório.</h2>
+          <p className="lead mt-6">O ambiente e o cuidado em cada etapa, como acontecem no dia a dia.</p>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-7"
-        >
-          <div className="-mx-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 sm:mx-0 sm:px-0 lg:grid lg:grid-cols-2 lg:items-start lg:justify-items-center lg:overflow-visible lg:pb-0">
-            {videos.map((video, index) => (
-              <article
-                key={video.src}
-                className={`w-[min(72vw,300px)] shrink-0 snap-center self-start rounded-[2rem] border border-border/70 bg-card p-2 shadow-elegant lg:w-full lg:max-w-[300px] ${
-                  index === 1 ? "lg:mt-16" : ""
-                }`}
-              >
-                <div className="overflow-hidden rounded-[1.55rem] bg-muted">
-                  <video
-                    className="block aspect-[9/16] w-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    poster={video.poster}
-                    preload="metadata"
-                    aria-label={video.label}
-                  >
-                    <source src={video.src} type="video/mp4" />
-                  </video>
-                </div>
-                <p className="px-3 py-4 text-xs uppercase tracking-[0.18em] text-accent">
-                  {video.label}
-                </p>
-              </article>
-            ))}
-          </div>
-        </motion.div>
+        <div className="mx-auto grid w-full max-w-[34rem] grid-cols-2 items-start gap-4 sm:gap-6 lg:col-span-7 lg:mx-0 lg:max-w-none">
+          <ClinicVideo {...videos[0]} />
+          <ClinicVideo {...videos[1]} />
+        </div>
       </div>
     </section>
   );
