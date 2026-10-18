@@ -5,9 +5,7 @@
 - **Origem:** modelo de dentes "ya" (arquivos `ya.obj`, `ya.stl`, `ya.3mf`, cerca de 32 dentes separados com raiz e duas
   gengivas), recebido em `牙齿模型Tooth+model.zip`. O 3MF é uma reexportação do Bambu Studio de 31/07/2024 e **não traz
   título, autor nem licença** nos metadados.
-- **Licença: não confirmada.** O responsável pelo site vai confirmar origem, autor e termos de uso comercial com quem enviou
-  o arquivo. Se a licença exigir crédito, incluir no rodapé e em `PrivacyPage.tsx`. Se não permitir uso comercial, substituir o
-  modelo (a cena aceita outro GLB com a mesma estrutura de nós, ver abaixo).
+- **Licença: uso confirmado.** Em 18/10/2026 o responsável pelo site confirmou, com quem enviou o arquivo, que o modelo pode ser usado no site sem restrições e sem exigência de crédito. Autor e termos formais não constam nos metadados do arquivo; se surgir exigência futura de crédito, incluir no rodapé e em `PrivacyPage.tsx`.
 - O arquivo-fonte fica fora do repositório, em `../assets-source/ya-tooth-model/ya.obj`.
 
 ## Adaptações feitas (obra derivada)

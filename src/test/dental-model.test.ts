@@ -58,9 +58,9 @@ describe("modelo da arcada (GLB gerado do OBJ ya)", () => {
     }
   });
 
-  it("registra a origem do modelo e a pendência de licença", () => {
+  it("registra a origem do modelo e a confirmação de licença", () => {
     const text = readFileSync(join(modelsDir, "ATTRIBUTION.md"), "utf8");
     expect(text).toContain("ya.obj");
-    expect(text).toContain("Licença: não confirmada");
+    expect(text).toContain("Licença: uso confirmado");
   });
 });
